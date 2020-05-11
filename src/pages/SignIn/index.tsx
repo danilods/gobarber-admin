@@ -8,6 +8,8 @@ import { Form } from '@unform/web';
 
 import * as Yup from 'yup';
 
+import { Link, useHistory } from 'react-router-dom';
+
 import {useAuth} from '../../hooks/AuthContext';
 
 import {useToast} from '../../hooks/ToastContext';
@@ -20,7 +22,7 @@ import Input from '../../components/Input';
 
 import Button from '../../components/Button';
 
-import {Container, Content, Background} from './styles';
+import {Container, Content, AnimationContainer, Background} from './styles';
 
 interface SignInFormData  {
   email: string;
@@ -32,71 +34,82 @@ const SignIn: React.FC = () => {
 
   const formRef = useRef<FormHandles>(null);
 
-  const {user, signIn} = useAuth();
+  const { signInFirebase } = useAuth();
 
   const { addToast } = useToast();
+  const history = useHistory();
 
-  console.log(user);
 
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
-    try {
-      formRef.current?.setErrors({});
-      const schema = Yup.object().shape({
-        email: Yup.string().required('E-mail obrigatório').email('Digite um e-mail válido'),
-        password: Yup.string().min(6, 'No mínimo 6 dígitos')
-      });
+      try {
+        formRef.current?.setErrors({});
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
+        const schema = Yup.object().shape({
+          email: Yup.string()
+          .required('E-mail obrigatório')
+          .email('digite um e-mail válido'),
+          password: Yup.string().required('Senha obrigatória'),
+        });
 
-    }
-     catch (err) {
+        await schema.validate(data, {
+          abortEarly: false,
+        });
+        await signInFirebase({
+          email: data.email,
+          password: data.password,
+        });
 
-      if(err instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(err);
-        formRef.current?.setErrors(errors);
+        history.push('/dashboard');
+
+      } catch(err) {
+
+        if(err instanceof Yup.ValidationError){
+          const errors = getValidationErrors(err);
+          formRef.current?.setErrors(errors);
+          return;
+        }
+        addToast({
+          type: 'error',
+          title: 'Erro na autenticação',
+          description: 'Ocorreu um erro ao fazer login. Cheque suas credenciais.'
+        });
+
       }
-      addToast();
-    }
 
-   await signIn({
-      email: data.email,
-      password: data.password,
-    });
-  }, [signIn, addToast]);
+    }, [signInFirebase, addToast, history],
+  );
 
   return (
     <Container>
-
      <Content>
-      <img src={logoImg} alt="4Men"/>
+       <AnimationContainer>
+          <img src={logoImg} alt="4Men"/>
 
-       <Form ref={formRef} onSubmit={handleSubmit}>
+          <Form ref={formRef} onSubmit={handleSubmit}>
 
-        <h1>Faça seu Login</h1>
+            <h1>Faça seu Login</h1>
 
-        <Input name="email" icon={FiMail} placeholder="Email" />
+            <Input name="email" icon={FiMail} placeholder="Email" />
 
-        <Input name="password"
-        icon={FiLock}
-        type="password"
-        placeholder="Senha" />
+            <Input name="password"
+            icon={FiLock}
+            type="password"
+            placeholder="Senha" />
 
-        <Button type="submit">Entrar</Button>
+            <Button type="submit">Entrar</Button>
 
-      <a href="">
-        Esqueci minha senha
-      </a>
+          <a href="">
+            Esqueci minha senha
+          </a>
 
-      </Form>
+          </Form>
 
-      <a href="">
-        <FiLogIn />
-        Criar uma conta
-      </a>
-
+          <Link to="/signup">
+            <FiLogIn />
+            Criar uma conta
+          </Link>
+      </AnimationContainer>
     </Content>
     <Background />
   </Container>

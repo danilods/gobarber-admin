@@ -10,17 +10,17 @@ import * as Yup from 'yup';
 
 import {Link, useHistory} from 'react-router-dom';
 
-import api from '../../services/api';
+import api from '../../../services/api';
 
-import {useToast} from '../../hooks/ToastContext';
+import {useToast} from '../../../hooks/ToastContext';
 
-import getValidationErrors from '../../utils/getValidationErrors';
+import getValidationErrors from '../../../utils/getValidationErrors';
 
 import logoImg from '../../assets/logo.svg';
 
-import Input from '../../components/Input';
+import Input from '../../../components/Input';
 
-import Button from '../../components/Button';
+import Button from '../../../components/Button';
 
 import {Container, Content, AnimationContainer, Background} from './styles';
 
@@ -30,7 +30,7 @@ interface SignUpFormData {
   password: string;
 }
 
-const SignUp: React.FC = () => {
+const EditStaff: React.FC = () => {
 
   const formRef = useRef<FormHandles>(null);
   const { addToast } = useToast();
@@ -79,14 +79,14 @@ const SignUp: React.FC = () => {
 
   return (
     <Container>
-    <Background />
+
     <Content>
-      <AnimationContainer>
+
       <img src={logoImg} alt="4Men"/>
 
           <Form ref={formRef} onSubmit={handleSubmit}>
 
-            <h1>Faça seu cadastro</h1>
+            <h1>Cadastrar novo colaborador</h1>
 
             <Input name="name" icon={FiUser} placeholder="Nome" />
 
@@ -104,7 +104,7 @@ const SignUp: React.FC = () => {
             <FiArrowLeft />
             Criar uma conta
           </Link>
-      </AnimationContainer>
+
     </Content>
   </Container>
   );
@@ -113,4 +113,4 @@ const SignUp: React.FC = () => {
 
 
 
-export default SignUp;
+export default EditStaff;

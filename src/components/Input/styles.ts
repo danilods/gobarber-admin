@@ -44,11 +44,9 @@ export const Container = styled.div<ContainerProps>`
       color: #ff9000;
 
     `}
-
-
-
     input {
       background: transparent;
+      width: 100%;
       border: 0;
       color: #f4ede8;
 
