@@ -76,6 +76,7 @@ export const Nav = styled.ul`
     align-items: center;
 
 
+
     a {
       color: #fff;
       text-decoration: none;
@@ -103,8 +104,6 @@ export const Nav = styled.ul`
 
       }
     }
-
-
 
     span {
       font-size: 16px;

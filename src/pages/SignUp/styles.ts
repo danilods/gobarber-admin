@@ -59,6 +59,8 @@ export const AnimationContainer = styled.div`
 
         h1 {
           margin-bottom: 24px;
+          color: #F4ede8;
+          font-family: 'Roboto Slab', serif;
         }
 
         a {

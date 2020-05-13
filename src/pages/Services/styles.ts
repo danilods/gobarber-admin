@@ -1,4 +1,4 @@
-import styled, {keyframes} from 'styled-components';
+import styled from 'styled-components';
 
 
 export const Container = styled.div`
@@ -123,62 +123,14 @@ export const CardItem = styled.div`
     font-weight: normal;
     line-height: 54px;
   }
-
-
 `;
-
-
-export const Playlist = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    min-height: 120px;
-    min-width: 300px;
-    margin-left: 20px;
-    word-wrap: break-word;
-    background-color: #191c24;
-    border-radius: 50%;
-    background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 0.25rem;
-
-    img {
-      height: 98px;
-      width: 98px;
-      margin-left: 12px;
-      border-radius: 50%;
-      border: 1px solid transparent;
-    }
-
-    h3 {
-      color: #fff;
-      margin-top: 0;
-      left: 5px;
-    }
-
-    strong {
-      font-size: 13px;
-      margin-top: 10px;
-    }
-
-  p {
-    line-height: 22px;
-    margin-top: 5px;
-    font-size: 13px;
-    color: #b3b3b3;
-  }
-
-  &:first-child {
-    margin: 0;
-  }
-`;
-
 export const ListCard = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   margin-left: 8px;
 `;
+
 
 export const User = styled.div`
 

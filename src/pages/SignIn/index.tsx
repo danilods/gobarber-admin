@@ -1,6 +1,6 @@
 import React, {useCallback, useRef} from 'react';
 
-import {FiLogIn, FiMail, FiLock} from 'react-icons/fi';
+import {FiLogIn, FiMail, FiLock, FiSend} from 'react-icons/fi';
 
 import { FormHandles } from '@unform/core';
 
@@ -34,7 +34,7 @@ const SignIn: React.FC = () => {
 
   const formRef = useRef<FormHandles>(null);
 
-  const { signInFirebase } = useAuth();
+  const {signInFirebase} = useAuth();
 
   const { addToast } = useToast();
   const history = useHistory();
@@ -63,6 +63,7 @@ const SignIn: React.FC = () => {
         history.push('/dashboard');
 
       } catch(err) {
+        console.log(err);
 
         if(err instanceof Yup.ValidationError){
           const errors = getValidationErrors(err);
@@ -99,14 +100,15 @@ const SignIn: React.FC = () => {
 
             <Button type="submit">Entrar</Button>
 
-          <a href="">
+          <Link to="/forgot">
+            <FiSend />
             Esqueci minha senha
-          </a>
+          </Link>
 
           </Form>
 
           <Link to="/signup">
-            <FiLogIn />
+          <FiLogIn />
             Criar uma conta
           </Link>
       </AnimationContainer>

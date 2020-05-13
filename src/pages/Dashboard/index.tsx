@@ -7,8 +7,12 @@ import img3 from '../../assets/stark.jpg';
 import users from '../../assets/users.svg';
 import money from '../../assets/dollar-sign.svg';
 import schedule from '../../assets/clock.svg';
-import service1 from '../../assets/aliciamento.svg';
-import service2 from '../../assets/barbeiro.svg';
+import service1 from '../../assets/creme.svg';
+import service2 from '../../assets/navalha.svg';
+import service3 from '../../assets/placa.svg';
+import service4 from '../../assets/barbeiro.svg';
+
+
 
 import {Container,  DataCard, CardItem,
   User,
@@ -173,17 +177,17 @@ const Dashboard: React.FC = () =>
           </CardItem>
           <CardItem>
           <ServiceItem>
-              <li>
-                <img src="https://avatars0.githubusercontent.com/u/13861600?v=4" alt=""/>
-                <h3>Danilo de Sousa</h3>
+             <li>
+                <img src={service3} alt=""/>
+                <h3>15</h3>
               </li>
             </ServiceItem>
           </CardItem>
           <CardItem>
           <ServiceItem>
               <li>
-                <img src="https://avatars0.githubusercontent.com/u/13861600?v=4" alt=""/>
-                <h3>Danilo de Sousa</h3>
+                <img src={service4} alt=""/>
+                <strong>15</strong>
               </li>
             </ServiceItem>
           </CardItem>

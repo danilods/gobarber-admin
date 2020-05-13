@@ -4,6 +4,12 @@ import {FiArrowLeft, FiMail, FiUser, FiLock} from 'react-icons/fi';
 
 import { FormHandles } from '@unform/core';
 
+import app from '../../services/firebaseApi';
+
+import * as firebase from "firebase/app"
+
+import "firebase/firestore"
+
 import { Form } from '@unform/web';
 
 import * as Yup from 'yup';
@@ -59,23 +65,80 @@ const SignUp: React.FC = () => {
 
       history.push('/');
 
-    }
-    catch(err) {
+    } catch(err) {
 
       if(err instanceof Yup.ValidationError){
         const errors = getValidationErrors(err);
         formRef.current?.setErrors(errors);
         return;
       }
-
-    }
       addToast({
         type: 'error',
-        title: 'Erro no cadastro',
-        description: 'Ocorreu um erro ao fazer o cadastro.'
-        });
-    }, [history, addToast],
-  );
+        title: 'Erro na autenticação',
+        description: 'Ocorreu um erro ao fazer login. Cheque suas credenciais.'
+      });
+
+    }
+
+  }, [addToast, history],
+);
+
+  const handleSubmitFirebase =
+      useCallback(async(data: SignUpFormData) => {
+        try {
+          formRef.current?.setErrors({});
+          const schema = Yup.object().shape({
+            name: Yup.string().required('Nome obrigatório'),
+            email: Yup.string().required('E-mail obrigatório').email('Digite um e-mail válido'),
+            password: Yup.string().min(6, 'No mínimo 6 dígitos')
+          });
+
+          await schema.validate(data, {
+            abortEarly: false,
+          });
+          const userCreated = await app.auth()
+          .createUserWithEmailAndPassword(data.email, data.password);
+
+          const dataCollection = {
+            nome: data.name,
+            email: data.email,
+            cidade: "",
+            estado: "",
+            cep: "",
+            latitude: "",
+            longitude: "",
+            role_user: "provedor",
+            ativo: false,
+            aberto: false
+          }
+
+          firebase.firestore().collection('provedores')
+          .doc(userCreated.user?.uid).set(dataCollection);
+
+          addToast({
+            type: 'success',
+            title: 'Cadastro realizado com sucesso',
+            description: 'Em breve entraremos em contato'
+          });
+
+          history.push('/');
+
+        }catch(err) {
+
+          if(err instanceof Yup.ValidationError){
+            const errors = getValidationErrors(err);
+            formRef.current?.setErrors(errors);
+            return;
+          }
+
+        }
+          addToast({
+            type: 'error',
+            title: 'Erro no cadastro',
+            description: 'Ocorreu um erro ao fazer o cadastro.'
+            });
+        }, [history, addToast],
+      );
 
   return (
     <Container>
@@ -84,7 +147,7 @@ const SignUp: React.FC = () => {
       <AnimationContainer>
       <img src={logoImg} alt="4Men"/>
 
-          <Form ref={formRef} onSubmit={handleSubmit}>
+          <Form ref={formRef} onSubmit={handleSubmitFirebase}>
 
             <h1>Faça seu cadastro</h1>
 

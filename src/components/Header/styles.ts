@@ -13,12 +13,12 @@ export const Container = styled.header`
 export const Search = styled.button`
     display: flex;
     align-items: center;
-    border-radius: 8px;
-    height: 30px;
-    width: 175px;
+
     padding: 6px 7px 6px 26px;
-    background: #ff9000;
+    background: transparent;
     border: 0 transparent;
+
+
 
       button {
         flex: 1;
@@ -29,8 +29,8 @@ export const Search = styled.button`
       }
 
       &:hover {
-          ${shade(0.4, '#ff9000')};
-        }
+          ${shade(0.7, '#ff9000')};
+      }
 `;
 
 export const User = styled.div`
@@ -41,17 +41,20 @@ export const User = styled.div`
   border-left: 1px solid #eee;
 
   div {
+
     text-align: center;
     margin-right: 30px;
 
     strong {
       display: block;
       color: #fff;
+      margin-top: 6px;
+      font-size: 14px
     }
 
     a {
       display: block;
-      margin-top: 2px;
+      margin-top: 6px;
       font-size: 12px;
       color: #fff;
     }
@@ -60,8 +63,29 @@ export const User = styled.div`
   img {
     width: 48px;
     height: 48px;
-    border-radius: 50%;
+    border-radius: 70%;
     margin-right: 20px;
+  }
+
+  button {
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+
+    strong {
+      color: #fff;
+      font-size: 12px;
+      margin-left: 5px;
+    }
+
+   > img {
+
+      width: 38px;
+      height: 38px;
+      border-radius: 100%;
+    }
   }
 
 

@@ -1,16 +1,11 @@
 import React, { createContext, useCallback, useState, useContext } from 'react';
 import api from '../services/api';
 import app from '../services/firebaseApi';
-import { AuthStateUser } from './FirebaseAuthContext';
-
+import * as firebase from 'firebase/app';
 
 interface AuthState {
   token: string;
   user: object;
-}
-
-interface AuthFirebaseState {
-  user: firebase.User | null;
 }
 
 interface SignInCredentials {
@@ -19,11 +14,18 @@ interface SignInCredentials {
 }
 
 interface AuthContextData {
-  user: object;
+  userFire: firebase.User;
+  userJWT: object;
   signIn(credentials: SignInCredentials): Promise<void>;
-  signInFirebase(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
+  signInFirebase(credentials: SignInCredentials): Promise<void>;
   signOutFirebase(): void;
+  sendPasswordResetEmail(email: string): Promise<void>;
+}
+
+export interface AuthStateUser {
+  initialising: boolean;
+  user: firebase.User;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -40,7 +42,22 @@ export const AuthProvider: React.FC = ({ children }) => {
     return {} as AuthState;
   });
 
-  const [fireData, setFireData] = useState<AuthFirebaseState>();
+  const [state, setState] = useState<AuthStateUser>(() => {
+
+    const user = firebase.auth().currentUser;
+    const userLocalStorage = localStorage.getItem('@4Men:user');
+
+      if(userLocalStorage) {
+        return {
+          initialising: !user,
+          user: JSON.parse(userLocalStorage),
+        };
+      }
+
+      return {} as AuthStateUser;
+  });
+
+
 
   const signIn = useCallback( async({email, password}) => {
     const response = await api.post('sessions', {
@@ -57,42 +74,56 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   }, []);
 
-  const signInFirebase = useCallback(async(data: SignInCredentials) => {
+  const signInFirebase = useCallback(async({email, password}) => {
     try {
      await app
      .auth()
-     .signInWithEmailAndPassword(data.email, data.password);
+     .signInWithEmailAndPassword(email, password);
 
      const user = app.auth().currentUser;
-
      if(user) {
-       return user;
+      setState({initialising: !user, user: user});
      }
+     localStorage.setItem('@4Men:user', JSON.stringify(user));
+
      console.log(user);
     } catch(error) {
       console.log(error);
     }
   },[]);
 
-  const signOutFirebase = useCallback(() => {
-      try {
-        app.auth().signOut();
-        console.log('logout');
-      }
-      catch(error) {
-        console.log('not logout');
-      }
-  }, []);
 
   const signOut = useCallback(() => {
-      localStorage.removeItem('4Men:token');
       localStorage.removeItem('4Men:user');
-
       setData({} as AuthState);
   }, []);
 
+  const signOutFirebase = useCallback(() => {
+      localStorage.removeItem('4Men:user');
+      setState({} as AuthStateUser);
+      app.auth().signOut();
+  }, []);
+
+  const sendPasswordResetEmail = useCallback(async(email) => {
+    try {
+     await app.auth().sendPasswordResetEmail(email);
+     localStorage.removeItem('4Men:user');
+    }catch(error) {
+      console.log(error);
+    }
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ user: data.user, signIn, signOut, signInFirebase, signOutFirebase }}>
+    <AuthContext.Provider value={{
+      userJWT: data.user,
+      userFire: state.user,
+      signIn, signOut,
+      signInFirebase,
+      signOutFirebase,
+      sendPasswordResetEmail,
+
+    }}
+      >
       {children}
     </AuthContext.Provider>
   )

@@ -1,6 +1,12 @@
-import React, {useCallback, useRef} from 'react';
+import React, {useCallback, useRef, useEffect, useState} from 'react';
 
 import {FiSettings, FiDollarSign} from 'react-icons/fi';
+
+import * as firebase from "firebase/app";
+
+import "firebase/firestore";
+
+import app from '../../services/firebaseApi';
 
 import { FormHandles } from '@unform/core';
 
@@ -29,19 +35,38 @@ import edit from '../../assets/edit.svg';
 import remove from '../../assets/delete.svg';
 
 interface SignInFormData  {
-  email: string;
-  password: string;
+  tipo: string;
+  valor: number;
 }
+
+interface imageProps {
+  path_image: string;
+  name: string;
+}
+
+interface serviceProps {
+  id: string;
+  tipo_servico: string;
+  valor: number;
+  provider_id: string;
+  images: [] | null;
+}
+
+
 
 const Services: React.FC = () => {
 
   const formRef = useRef<FormHandles>(null);
 
-  const { signIn} = useAuth();
+  const {userFire} = useAuth();
 
   const { addToast } = useToast();
   const history = useHistory();
 
+  const [serviceData, setServiceData] =
+  useState<firebase.firestore.DocumentData>(() => {
+    return [] as firebase.firestore.DocumentData;
+  });
 
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
@@ -60,10 +85,21 @@ const Services: React.FC = () => {
           abortEarly: false,
         });
 
+        const dataService = {
+          tipo_servico: data.tipo,
+          valor: data.valor,
+          provider_id: userFire.uid,
+          images: []
+        }
 
-        history.push('/dashboard');
+        firebase.firestore().collection('servicos')
+          .add(dataService);
 
-
+          addToast({
+            type: 'success',
+            title: 'Cadastro realizado com sucesso',
+            description: 'Serviço cadastrado'
+          });
 
       } catch(err) {
 
@@ -80,8 +116,54 @@ const Services: React.FC = () => {
 
       }
 
-    }, [signIn, addToast, history],
+    }, [addToast, history],
   );
+
+  useEffect(() => {
+    firebase
+    //Accesses your Firestore database
+      .firestore()
+    //Access the "items" collection
+      .collection("servicos")
+    //You can "listen" to a document with the Firebase onSnapshot() method.
+      .onSnapshot(snapshot => {
+    /*
+    The returned snapshot sends us back the id and the document data. So we map through it.
+     */
+        const listItems = snapshot.docs.map(doc => ({
+        /*
+        Map each document into snapshot
+        id and data are pushed into items array
+        spread operator merges data to id. What is happening is the JavaScript object is being called.
+        */
+             id: doc.id,
+          ...doc.data(),
+        }))
+    //Now we set items equal to items we read from the Firestore
+        setServiceData(listItems);
+      })
+
+    }, [])
+
+    const handleDelete = useCallback((id) => {
+      try {
+        firebase.firestore().collection('servicos')
+        .doc(id)
+        .delete();
+        addToast({
+          type: 'success',
+          title: 'Registro removido com sucesso',
+          description: 'Serviço excluído'
+        });
+      } catch(err) {
+        addToast({
+          type: 'error',
+          title: 'Erro ao remover registro',
+          description: 'Erro de exclusão'
+        });
+      }
+
+    },[]);
 
       return (
         <Container>
@@ -114,81 +196,22 @@ const Services: React.FC = () => {
                 </thead>
 
                 <tbody>
+                  {serviceData.map((items: serviceProps) => (
 
-                    <tr >
-                      <td className="title">Corte Degradê</td>
-                      <td className="">R$ 35,00</td>
+                      <tr >
+                      <td className="title">{items.tipo_servico}</td>
+                      <td className="">R$ {items.valor}</td>
 
                       <td><div><Link to="/staffs/new">
                         <img src={edit} alt=""/>
                       </Link>
-                      <Link to="/staffs/delete">
+                      <Link to="/services" onClick={() => handleDelete(items.id)}>
                         <img src={remove} alt=""/>
                       </Link></div>
                       </td>
                     </tr>
 
-                    <tr >
-                      <td className="title">Corte Moicano</td>
-                      <td className="">R$ 35,00</td>
-
-                      <td><div><Link to="/staffs/new">
-                        <img src={edit} alt=""/>
-                      </Link>
-                      <Link to="/staffs/delete">
-                        <img src={remove} alt=""/>
-                      </Link></div>
-                      </td>
-                    </tr>
-                    <tr >
-                      <td className="title">Corte Militar</td>
-                      <td className="">R$ 35,00</td>
-
-                      <td><div><Link to="/staffs/new">
-                        <img src={edit} alt=""/>
-                      </Link>
-                      <Link to="/staffs/delete">
-                        <img src={remove} alt=""/>
-                      </Link></div>
-                      </td>
-                    </tr>
-                    <tr >
-                      <td className="title">Corte Social</td>
-                      <td className="">R$ 35,00</td>
-
-                      <td><div><Link to="/staffs/new">
-                        <img src={edit} alt=""/>
-                      </Link>
-                      <Link to="/staffs/delete">
-                        <img src={remove} alt=""/>
-                      </Link></div>
-                      </td>
-                    </tr>
-                    <tr >
-                      <td className="title">Barba</td>
-                      <td className="">R$ 35,00</td>
-
-                      <td><div><Link to="/staffs/new">
-                        <img src={edit} alt=""/>
-                      </Link>
-                      <Link to="/staffs/delete">
-                        <img src={remove} alt=""/>
-                      </Link></div>
-                      </td>
-                    </tr>
-                    <tr >
-                      <td className="title">Sobrancelha</td>
-                      <td className="">R% 35,00</td>
-
-                      <td><div><Link to="/staffs/new">
-                        <img src={edit} alt=""/>
-                      </Link>
-                      <Link to="/staffs/delete">
-                        <img src={remove} alt=""/>
-                      </Link></div>
-                      </td>
-                    </tr>
-
+                  ))}
 
                 </tbody>
               </table>

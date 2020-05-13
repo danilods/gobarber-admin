@@ -1,14 +1,28 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-
+import React, {useCallback} from 'react';
+import {Link, useHistory} from 'react-router-dom';
+import sair from '../../assets/sair.svg';
 import { Container, Search, User } from './styles';
+import {useAuth} from '../../hooks/AuthContext';
 
-const Header: React.FC = ({}) => {
+const Header: React.FC = () => {
+
+  const {signOutFirebase, userFire} = useAuth();
+  const history = useHistory();
+
+  const handleSignOut = useCallback(() => {
+    try{
+      signOutFirebase();
+      console.log('sair');
+      history.push('/');
+    } catch(err) {
+      console.log(err);
+    }
+
+  }, [signOutFirebase,history]);
+
   return (
     <Container>
-        <Search>
-          <button  type="button"></button>
-        </Search>>
+
         <User>
             <img
               src={
@@ -17,9 +31,12 @@ const Header: React.FC = ({}) => {
               alt="Danilo"
             />
             <div>
-              <strong>Danilo</strong>
+              <strong>{userFire.displayName}</strong>
               <Link to="/profile">Meu perfil</Link>
+
             </div>
+            <button type="button" onClick={handleSignOut}>
+              <img src={sair} alt=""/><strong>Sair</strong></button>
 
 
         </User>

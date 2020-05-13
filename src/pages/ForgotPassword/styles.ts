@@ -2,7 +2,7 @@ import styled, {keyframes} from 'styled-components';
 
 import {shade} from 'polished';
 
-import signUpBackgroundImg from '../../assets/sign-in-background.png';
+import forgotBackgroundImg from '../../assets/forgot-image.jpg';
 
 export const Container = styled.div`
     height: 100vh;
@@ -22,10 +22,10 @@ export const Content = styled.div`
 
 `;
 
-const appearFromLeft = keyframes`
+const appearFromRight = keyframes`
     from {
       opacity: 0;
-      transform: translateX(-100px);
+      transform: translateX(100px);
     }
     to {
       opacity: 1;
@@ -33,10 +33,10 @@ const appearFromLeft = keyframes`
     }
 `;
 
-const appearFromRight = keyframes`
+const appearFromLeft = keyframes`
     from {
       opacity: 0;
-      transform: translateX(100px);
+      transform: translateX(-100px);
     }
     to {
       opacity: 1;
@@ -50,7 +50,7 @@ export const AnimationContainer = styled.div`
     align-items: center;
     justify-content: center;
 
-    animation: ${appearFromLeft} 1.5s;
+    animation: ${appearFromRight} 1.5s;
 
      form {
         margin: 80px 0;
@@ -60,17 +60,14 @@ export const AnimationContainer = styled.div`
         h1 {
           margin-bottom: 24px;
           color: #F4ede8;
-          font-family: 'Roboto Slab', serif;        }
+          font-family: 'Roboto Slab', serif;
+        }
 
         a {
           color: #F4ede8;
           display: block;
-          margin-top: 20px;
+          margin-top: 24px;
           transition: color 0.2s;
-
-          svg {
-            margin-right: 16px;
-          }
 
           &:hover {
             color: ${shade(0.2, '#f4ede8')};
@@ -81,7 +78,7 @@ export const AnimationContainer = styled.div`
       > a {
           color: #ff9000;
           display: block;
-          margin-top: 20px;
+          margin-top: 24px;
           transition: color 0.2s;
 
           display:flex;
@@ -99,10 +96,10 @@ export const AnimationContainer = styled.div`
 
 export const Background = styled.div`
     flex: 1;
-    background: url(${signUpBackgroundImg}) no-repeat center;
+    background: url(${forgotBackgroundImg}) no-repeat center;
     background-size: cover;
 
-    animation: ${appearFromRight} 1.5s;
+    animation: ${appearFromLeft} 1.5s;
 
 `;
 

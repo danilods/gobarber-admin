@@ -237,7 +237,7 @@ export const ServiceItem = styled.div`
       height: 12px;
       width: 12px;
       background: #7CFC00;
-      border-radius: 50%;
+      border-radius: 20%;
       border-color: transparent
     }
 
@@ -250,8 +250,8 @@ export const ServiceItem = styled.div`
 
     h3 {
       display: block;
-      margin-top: 10px;
-      font-size: 12px;
+      margin-top: 20px;
+      font-size: 20px;
       color: #fff;
     }
   }
@@ -261,7 +261,7 @@ export const ServiceItem = styled.div`
     min-height: 78px;
     max-height:78px;
     max-width: 78px;
-    border-radius: 50%;
+    border-radius: 20%;
     margin-right: 15px;
     margin-left: 0;
     object-fit: fill;
