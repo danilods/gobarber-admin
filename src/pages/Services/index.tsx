@@ -202,7 +202,7 @@ const Services: React.FC = () => {
                       <td className="title">{items.tipo_servico}</td>
                       <td className="">R$ {items.valor}</td>
 
-                      <td><div><Link to="/staffs/new">
+                      <td><div><Link to={`/services/${items.id}/edit`}>
                         <img src={edit} alt=""/>
                       </Link>
                       <Link to="/services" onClick={() => handleDelete(items.id)}>

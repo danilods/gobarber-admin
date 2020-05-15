@@ -62,7 +62,7 @@ export const CardItem = styled.div`
       button {
       max-height: 40px;
       max-width: 260px;
-
+      background: #0099cc;
       color: #000000;
       margin-left: 5px;
     }
@@ -177,7 +177,6 @@ export const AnimationContainer = styled.div`
           }
       }
 `;
-
 
 
 

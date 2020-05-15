@@ -129,7 +129,7 @@ export const TableContainer = styled.section`
             border-radius: 50%;
             border-color: transparent;
             margin-right: 25px;
-          }
+        }
       }
 
       a {

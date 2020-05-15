@@ -13,6 +13,8 @@ import Staffs from '../pages/Staffs';
 import CreateStaff from '../pages/Staffs/create';
 import Services from '../pages/Services';
 
+import EditService from '../pages/Services/Form/Edit';
+
 
 const Routes: React.FC = () => (
   <Switch>
@@ -23,6 +25,8 @@ const Routes: React.FC = () => (
     <Route path="/staffs" exact component={Staffs} isPrivate/>
     <Route path="/staffs/new" exact component={CreateStaff} isPrivate/>
     <Route path="/services" exact component={Services} isPrivate/>
+    <Route path="/services/:docId/edit" exact component={EditService} isPrivate/>
+
 
 
 

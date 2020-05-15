@@ -1,5 +1,8 @@
-import React, {useCallback, useRef, useState, ChangeEvent} from 'react';
+import React, {useCallback, useRef, useState, useEffect} from 'react';
 
+import * as firebase from "firebase/app";
+
+import "firebase/firestore";
 
 import { FiMail, FiUser, FiPhoneCall} from 'react-icons/fi';
 
@@ -9,7 +12,7 @@ import { Form } from '@unform/web';
 
 import * as Yup from 'yup';
 
-import {Link, useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 import api from '../../../services/api';
 
@@ -19,15 +22,13 @@ import getValidationErrors from '../../../utils/getValidationErrors';
 
 import Input from '../../../components/Input';
 
-import Modal from '../../../components/Modal';
-
 import Button from '../../../components/Button';
+
+import CheckBox from '../../../components/Checkbox';
 
 import {Container, DataCard, CardItem, User} from './styles';
 
 import {TableContainer} from '../../_layouts/styles';
-
-import remove from '../../../assets/delete.svg';
 
 
 interface SignUpFormData {
@@ -36,18 +37,46 @@ interface SignUpFormData {
   password: string;
 }
 
+interface serviceProps {
+  id: string;
+  tipo_servico: string;
+  valor: number;
+  provider_id: string;
+  images: [] | null;
+  favorite: boolean | undefined;
+}
+
+interface newService {
+  id: string;
+}
+
 const CreateStaff: React.FC = () => {
 
   const formRef = useRef<FormHandles>(null);
   const { addToast } = useToast();
   const history = useHistory();
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [stateService, setStateService] =
+  useState<firebase.firestore.DocumentData>(() => {
+    return [] as firebase.firestore.DocumentData;
+  });
+  const [serviceStaff, setServiceStaff] = useState<serviceProps>();
 
-  const handleModal = useCallback(() => {
-    setIsModalVisible(true);
-  }, []);
 
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection("servicos")
+      .onSnapshot(snapshot => {
+      const listItems = snapshot.docs.map(doc => ({
 
+             id: doc.id,
+          ...doc.data(),
+        }))
+        setStateService(listItems);
+      })
+
+    }, [])
 
   const handleSubmit = useCallback(async (data: SignUpFormData) => {
     try {
@@ -90,12 +119,26 @@ const CreateStaff: React.FC = () => {
     }, [history, addToast],
   );
 
+  useEffect(() => {
+    const filtered = stateService.filter((repo:serviceProps) => repo.favorite);
+    console.log(filtered);
+    setServiceStaff(filtered);
+  }, [stateService])
 
+  function handleServices(id: string) {
+
+    const addService = stateService.map((repo:serviceProps) => {
+      return repo.id === id ? {...repo, favorite: !repo.favorite} : repo;
+    });
+
+    setStateService(addService);
+
+    console.log(stateService);
+  }
 
   return (
     <Container>
         <DataCard>
-
             <CardItem>
 
                 <h1>Cadastrar novo colaborador</h1>
@@ -121,51 +164,44 @@ const CreateStaff: React.FC = () => {
                       <Button type="button">Cancelar</Button>
                   </div>
                   </Form>
+
             </CardItem>
 
               <CardItem>
                 <div>
-                  <h1>Serviços</h1>
-                  <Button type="button" onClick={handleModal}>Adicionar serviços</Button>
-                        {isModalVisible ? (
-                          <Modal id="modal" onClose={() => setIsModalVisible(false)}>
-                            <h2>Modal App</h2>
-                          </Modal>
-                        ) : null}
+                  <h1>Marque os serviços do profissional</h1>
+
                 </div>
 
                 <TableContainer>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Tipo de serviço</th>
-                    <th>Valor (R$)</th>
-                    <th></th>
-
-                 </tr>
-                </thead>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Nome do serviço</th>
+                        <th>Valor</th>
+                        <th>Atribuído</th>
+                      </tr>
+                  </thead>
 
                 <tbody>
-                    <tr >
-                      <td className="title">Corte de cabelo</td>
-                      <td className="">55,00</td>
-                      <td>
-                      <div>
-                      <Link to="/staffs/delete">
-                        <img src={remove} alt=""/>
-                      </Link></div>
+                  {stateService.map((items: serviceProps) => (
+
+                      <tr key={items.id}>
+                      <td className="title">{items.tipo_servico}</td>
+                      <td className="">R$ {items.valor}</td>
+                      <td><div>
+
+                        <CheckBox
+                        onChange={() => handleServices(items.id)}
+                        defaultChecked={items.favorite}
+                        />
+
+                      </div>
                       </td>
                     </tr>
-                    <tr >
-                      <td className="title">Tratamento de barba</td>
-                      <td className="">20,00</td>
-                      <td>
-                      <div>
-                      <Link to="/staffs/delete">
-                        <img src={remove} alt=""/>
-                      </Link></div>
-                      </td>
-                    </tr>
+
+                  ))}
+
                 </tbody>
               </table>
             </TableContainer>
