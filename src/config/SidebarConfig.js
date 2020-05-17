@@ -4,7 +4,7 @@ import * as Icon from "react-icons/fc"
 const SidebarConfig = [
   {
     id: "home",
-    title: "Meus dados",
+    title: "Dashboard",
     type: "item",
     icon: <Icon.FcLibrary size={20}/>,
     color: 'blue',

@@ -1,19 +1,35 @@
-import React from 'react';
+import React, {lazy} from 'react';
 import { Switch } from 'react-router-dom';
 
 import Route from './Route';
 
-import SignIn from '../pages/SignIn';
-import SignUp from '../pages/SignUp';
-import Forgot from '../pages/ForgotPassword';
+const SignIn = lazy(() => import ('../pages/SignIn'))
+const SignUp = lazy(() => import ('../pages/SignUp'))
+const Forgot = lazy(() => import ('../pages/ForgotPassword'))
 
+const Dashboard = lazy(() => {
+  return new Promise(resolve => setTimeout(resolve, 5 * 1000)).then(
+    () =>
+      import('../pages/Dashboard')
+  );
+});
 
-import Dashboard from '../pages/Dashboard';
-import Staffs from '../pages/Staffs';
-import CreateStaff from '../pages/Staffs/create';
-import Services from '../pages/Services';
+const Staffs = lazy(() => {
+  return new Promise(resolve => setTimeout(resolve, 5 * 1000)).then(
+    () =>
+       import('../pages/Staffs')
+  );
+});
 
-import EditService from '../pages/Services/Form/Edit';
+const Services = lazy(() => {
+  return new Promise(resolve => setTimeout(resolve, 5 * 1000)).then(
+    () =>
+      import('../pages/Services')
+  );
+});
+
+const CreateStaff = lazy(() => import ('../pages/Staffs/create'))
+const EditService = lazy(() => import ('../pages/Services/Form/Edit'))
 
 
 const Routes: React.FC = () => (
@@ -26,10 +42,6 @@ const Routes: React.FC = () => (
     <Route path="/staffs/new" exact component={CreateStaff} isPrivate/>
     <Route path="/services" exact component={Services} isPrivate/>
     <Route path="/services/:docId/edit" exact component={EditService} isPrivate/>
-
-
-
-
   </Switch>
 );
 

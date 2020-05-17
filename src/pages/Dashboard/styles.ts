@@ -1,5 +1,20 @@
 import styled, {keyframes} from 'styled-components';
 
+const pulse = keyframes`
+    0% {
+    -moz-box-shadow: 0 0 0 0 #ff9000;
+    box-shadow: 0 0 0 0 #ff9000;
+    }
+    80% {
+        -moz-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+        box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+        box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+    }
+
+`;
 
 export const Container = styled.div`
   width: 100%;
@@ -189,6 +204,8 @@ export const User = styled.div`
       background: #7CFC00;
       border-radius: 50%;
       border-color: transparent;
+      animation: ${pulse} 1.5s ease-in-out;
+      animation-iteration-count: infinite;
 
     }
 

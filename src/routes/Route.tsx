@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import { Route as ReactDOMRoute,
   RouteProps as ReactDOMRouteProps,
   Redirect
@@ -6,7 +6,7 @@ import { Route as ReactDOMRoute,
 import {useAuth} from '../hooks/AuthContext';
 import DefaultLayout from '../pages/_layouts';
 import AuthLayout from '../pages/_layouts/auth';
-
+import Loader from '../components/Loader';
 
 interface RouteProps extends ReactDOMRouteProps {
   isPrivate?: boolean;
@@ -23,7 +23,9 @@ const Route: React.FC<RouteProps> = ({ isPrivate = false, component: Component,.
 
       return isPrivate === !!userFire || !! userJWT ? (
         <Layout>
+          <Suspense fallback={<Loader />}>
           <Component />
+          </Suspense>
         </Layout>
 
       ) : (

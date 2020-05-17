@@ -1,4 +1,6 @@
 import React from 'react';
+
+
 import img from '../../assets/edward.jpg';
 import img1 from '../../assets/deadpool-1.jpg';
 import img2 from '../../assets/rocky.jpg';
@@ -11,8 +13,6 @@ import service1 from '../../assets/creme.svg';
 import service2 from '../../assets/navalha.svg';
 import service3 from '../../assets/placa.svg';
 import service4 from '../../assets/barbeiro.svg';
-
-
 
 import {Container,  DataCard, CardItem,
   User,
@@ -28,7 +28,7 @@ const Dashboard: React.FC = () =>
       return (
         <Container>
         <CardContainer>
-            <Card>
+          <Card>
               <User>
                   <img
                     src={
@@ -41,9 +41,9 @@ const Dashboard: React.FC = () =>
                     <h4>Em atendimento</h4>
                   </div>
               </User>
+          </Card>
 
-        </Card>
-            <Card>
+          <Card>
             <User>
                   <img
                     src={
@@ -56,9 +56,9 @@ const Dashboard: React.FC = () =>
                     <h4>Em atendimento</h4>
                   </div>
               </User>
-            </Card>
+                  </Card>
 
-            <Card>
+                  <Card>
             <User>
                   <img
                     src={
@@ -71,9 +71,9 @@ const Dashboard: React.FC = () =>
                     <h4>Em atendimento</h4>
                   </div>
               </User>
-            </Card>
+                  </Card>
 
-            <Card>
+                  <Card>
             <User>
                   <img
                     src={
@@ -86,8 +86,7 @@ const Dashboard: React.FC = () =>
                     <h4>Em atendimento</h4>
                   </div>
               </User>
-            </Card>
-
+                  </Card>
 
           </CardContainer>
 

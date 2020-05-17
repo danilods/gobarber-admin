@@ -22,10 +22,7 @@ import Input from '../../../../components/Input';
 
 import Button from '../../../../components/Button';
 
-import {Container, DataCard, CardItem, User} from './styles';
-
-
-import remove from '../../../assets/delete.svg';
+import {Container, DataCard, CardItem} from './styles';
 
 
 interface ServiceFormData {

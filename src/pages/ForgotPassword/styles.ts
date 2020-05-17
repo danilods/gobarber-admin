@@ -2,7 +2,7 @@ import styled, {keyframes} from 'styled-components';
 
 import {shade} from 'polished';
 
-import forgotBackgroundImg from '../../assets/forgot-image.jpg';
+import forgotBackgroundImg from '../../assets/forgot-background.jpg';
 
 export const Container = styled.div`
     height: 100vh;

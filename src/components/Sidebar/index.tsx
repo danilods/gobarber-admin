@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import logo from '../../assets/main-logo.svg';
 import SidebarConfig from '../../config/SidebarConfig';
 
@@ -24,19 +24,19 @@ const Sidebar: React.FC = () => {
             </User>
 
           <Nav>
-            <li>
+
               <span>Menu</span>
-            </li>
+
                 {SidebarConfig.map((items) => (
                  <li>
-                   <div>
-                   {items.icon}
-                   </div>
-                   <Link to={items.navLink}>
-                   {items.title}
-                   </Link></li>
+                    <div>
+                     {items.icon}
+                    </div>
+                    <NavLink exact to={items.navLink} activeClassName="selected">
+                     {items.title}
+                     </NavLink>
+                  </li>
                 ))}
-
           </Nav>
         </div>
 

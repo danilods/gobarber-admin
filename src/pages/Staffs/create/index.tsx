@@ -31,18 +31,17 @@ import {Container, DataCard, CardItem, User} from './styles';
 import {TableContainer} from '../../_layouts/styles';
 
 
-interface SignUpFormData {
+interface staffFormData {
   name: string;
   email: string;
-  password: string;
+  telefone: string;
+  servicos: [] | null;
 }
 
 interface serviceProps {
-  id: string;
+  id: string ;
   tipo_servico: string;
   valor: number;
-  provider_id: string;
-  images: [] | null;
   favorite: boolean | undefined;
 }
 
@@ -60,8 +59,7 @@ const CreateStaff: React.FC = () => {
   useState<firebase.firestore.DocumentData>(() => {
     return [] as firebase.firestore.DocumentData;
   });
-  const [serviceStaff, setServiceStaff] = useState<serviceProps>();
-
+  const [serviceStaff, setServiceStaff] = useState<[serviceProps]>();
 
   useEffect(() => {
     firebase
@@ -78,7 +76,7 @@ const CreateStaff: React.FC = () => {
 
     }, [])
 
-  const handleSubmit = useCallback(async (data: SignUpFormData) => {
+  const handleSubmit = useCallback(async (data: staffFormData) => {
     try {
       formRef.current?.setErrors({});
       const schema = Yup.object().shape({
@@ -91,7 +89,17 @@ const CreateStaff: React.FC = () => {
         abortEarly: false,
       });
 
-      await api.post('users', data);
+      const fullData = {
+        name: data.name,
+        email: data.email,
+        telefone: data.telefone,
+        servicos: ''
+      }
+
+      console.log(fullData);
+
+      firebase.firestore().collection('profissionais')
+          .add(data);
 
       addToast({
         type: 'success',
@@ -109,20 +117,22 @@ const CreateStaff: React.FC = () => {
         formRef.current?.setErrors(errors);
         return;
       }
-
-    }
+      console.log(err);
       addToast({
         type: 'error',
         title: 'Erro no cadastro',
         description: 'Ocorreu um erro ao fazer o cadastro.'
         });
+
+    }
+
     }, [history, addToast],
   );
 
   useEffect(() => {
     const filtered = stateService.filter((repo:serviceProps) => repo.favorite);
-    console.log(filtered);
-    setServiceStaff(filtered);
+
+
   }, [stateService])
 
   function handleServices(id: string) {
@@ -130,19 +140,17 @@ const CreateStaff: React.FC = () => {
     const addService = stateService.map((repo:serviceProps) => {
       return repo.id === id ? {...repo, favorite: !repo.favorite} : repo;
     });
-
     setStateService(addService);
-
-    console.log(stateService);
   }
 
   return (
     <Container>
+      <Form ref={formRef} onSubmit={handleSubmit}>
         <DataCard>
             <CardItem>
 
                 <h1>Cadastrar novo colaborador</h1>
-                <Form ref={formRef} onSubmit={handleSubmit}>
+
                   <User>
 
                         <img src="https://avatars0.githubusercontent.com/u/13861600?v=4" alt=""/>
@@ -163,7 +171,7 @@ const CreateStaff: React.FC = () => {
                       <Button type="submit">Salvar</Button>
                       <Button type="button">Cancelar</Button>
                   </div>
-                  </Form>
+
 
             </CardItem>
 
@@ -190,12 +198,11 @@ const CreateStaff: React.FC = () => {
                       <td className="title">{items.tipo_servico}</td>
                       <td className="">R$ {items.valor}</td>
                       <td><div>
-
                         <CheckBox
+                        name="servicos"
                         onChange={() => handleServices(items.id)}
                         defaultChecked={items.favorite}
                         />
-
                       </div>
                       </td>
                     </tr>
@@ -210,7 +217,7 @@ const CreateStaff: React.FC = () => {
 
 
         </DataCard>
-
+        </Form>
 
   </Container>
   );

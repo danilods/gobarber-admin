@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import sair from '../../assets/sair.svg';
-import { Container, Search, User } from './styles';
+import { Container, User } from './styles';
 import {useAuth} from '../../hooks/AuthContext';
 
 const Header: React.FC = () => {

@@ -6,8 +6,6 @@ import * as firebase from "firebase/app";
 
 import "firebase/firestore";
 
-import app from '../../services/firebaseApi';
-
 import { FormHandles } from '@unform/core';
 
 import { Form } from '@unform/web';
