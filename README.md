@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src=".github/logo.svg" alt="GoBarberAdmin" width="250px">
+![Alt text](/public/gobarber-logo.png?raw=true "gobarber-admin")
 </h1>
 
 <h3 align="center">
