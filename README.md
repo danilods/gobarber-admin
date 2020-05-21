@@ -3,23 +3,23 @@
 </h1>
 
 <h3 align="center">
-  Boilerplate para backend Admin
+  Backend Admin Template
 </h3>
 
 <p align="center">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/danilods/gobarber-admin?color=%235636D3">
 
   <a href="https://www.linkedin.com/in/eliasgcf/">
-    <img alt="Made by" src="https://img.shields.io/badge/made%20by-elias%20gabriel-%235636D3">
+    <img alt="Made by" src="https://img.shields.io/badge/made%20by-Danilods">
   </a>
   
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/danilods/gobarber-admin?color=%235636D3">
   
-  <a href="https://github.com/EliasGcf/gofinances/commits/master">
+  <a href="https://github.com/danilods/gobarber-admin/commits/master">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/danilods/gobarber-admin?color=%235636D3">
   </a>
   
-  <a href="https://github.com/EliasGcf/gofinances/issues">
+  <a href="https://github.com/danilods/gobarber-admin/issues">
     <img alt="Repository issues" src="https://img.shields.io/github/issues/danilods/gobarber-admin?color=%235636D3">
   </a>
   
@@ -27,11 +27,11 @@
 </p>
 
 <p align="center">
-  <a href="#-about-the-project">About the project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-getting-started">Getting started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-how-to-contribute">How to contribute</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-license">License</a>
+  <a href="#-about-the-project">Sobre o projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-technologies">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-getting-started">Iniciando o projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-how-to-contribute">Como contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-license">Licença</a>
 </p>
 
 
@@ -40,11 +40,10 @@
 
 ## 💰 About the project
 
+  O GoBarber Admin é um projeto desenvolvido a partir da participação no Bootcamp GoStack da #RocketSeat. Durante o curso, a metodologia de ensino é voltada diretamente para atividades práticas, de modo a refletir, ao máximo, o ambiente real encontrado no mercado de trabalho. A partir da ideia da aplicação GoBarber ensinada no BootCamp, houve a iniciativa particular de praticar os conceitos ministrados no curso; sendo assim, essa atividade resultou na criação de um ambiente administrativo, abstraindo a simulação da gestão da aplicação. 
 
 
-## 🚀 Technologies
-
-Technologies that I used to develop this api
+## 🚀 Tecnologias
 
 - [Node.js](https://nodejs.org/)
 - [ReactJS](https://reactjs.org/)
@@ -52,9 +51,6 @@ Technologies that I used to develop this api
 - [TypeScript](https://www.typescriptlang.org/)
 - [TypeORM](https://typeorm.io/#/)
 - [Express](https://expressjs.com/pt-br/)
-- [PostgreSQL](https://www.postgresql.org/)
-- [Jest](https://jestjs.io/)
-- [SuperTest](https://github.com/visionmedia/supertest)
 - [React Router DOM](https://reacttraining.com/react-router/)
 - [React Navigation](https://reactnavigation.org/)
 - [React Icons](https://react-icons.netlify.com/#/)
@@ -64,27 +60,40 @@ Technologies that I used to develop this api
 - [Prettier](https://prettier.io/)
 - [EditorConfig](https://editorconfig.org/)
 
+
 ## 💻 Getting started
 
-<!-- Importe o arquivo `Insomnia.json` no Insomnia ou clique no botão [Run in Insomnia](#insomniaButton) -->
 
 ### Requirements
 
 - [Node.js](https://nodejs.org/en/)
 - [Yarn](https://classic.yarnpkg.com/) or [npm](https://www.npmjs.com/)
-- One instance of [PostgreSQL](https://www.postgresql.org/)
 
-> Obs.: I recommend use docker
 
-**Clone the project and access the folder**
+**Clone o projeto e acesse o diretório /gobarber-admin, conforme o comando abaixo **
 
 ```bash
-$ git clone https://github.com/EliasGcf/gofinances.git && cd gofinances
+$ git clone https://github.com/danilods/gobarber-admin.git && cd gobarber-admin
 ```
 
-**Follow the steps below**
 
-### Backend
+**Siga os passos a seguir**
+
+### Backend para simulação de autenticação JWT
+
+### O foco do projeto é no backoffice da aplicação, de modo que sua estrutura visual possa ser evoluída. Portanto, o backend foi substituído por um simulador de autenticação e API, utilizando json_server com JWT.
+
+### Abra uma nova janela do terminal e acesse o diretório gobarber-admin/fake-backend-api
+
+```bash
+# Starting from the project root folder, go to backend folder
+$ cd ../gobarber-admin/fake-backend-api
+
+# Inicie o json_server
+$ yarn start or npm start
+
+# Você poderá acessar os dados para autenticação no arquivo users.json
+# O arquivo databse.json possibilita você controlar os dados a serem utilizados em um CRUD
 
 ```bash
 # Starting from the project root folder, go to backend folder
