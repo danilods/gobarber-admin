@@ -1,6 +1,5 @@
 <h1 align="center">
-![Alt text](/public/gobarber-logo.png?raw=true "gobarber-admin")
-</h1>
+<img src="public/gobarber-logo.png" title="GobarberAdmin"></h1>
 
 <h3 align="center">
   Backend Admin Template
@@ -59,6 +58,10 @@
 - [Eslint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
 - [EditorConfig](https://editorconfig.org/)
+- [Lazy Loading](https://pt.wikipedia.org/wiki/Lazy_loading)
+- [Code Splitting](https://pt-br.reactjs.org/docs/code-splitting.html)
+
+
 
 
 ## 💻 Iniciando
@@ -197,4 +200,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Desenvolvido por 💜 by Danilo de Sousa 👋 [Veja meu linkedin](https://www.linkedin.com/in/danilo-de-sousa-97594b187/)
+Desenvolvido por 💜 Danilo de Sousa 👋 [Veja meu linkedin](https://www.linkedin.com/in/danilo-de-sousa-97594b187/)
