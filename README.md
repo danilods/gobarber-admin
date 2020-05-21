@@ -1,9 +1,9 @@
 <h1 align="center">
-  <img src=".github/logo.svg" alt="GoFinances" width="250px">
+  <img src=".github/logo.svg" alt="GoBarberAdmin" width="250px">
 </h1>
 
 <h3 align="center">
-  Finances control application
+  Boilerplate para backend Admin
 </h3>
 
 <p align="center">
