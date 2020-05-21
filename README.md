@@ -9,7 +9,7 @@
 <p align="center">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/danilods/gobarber-admin?color=%FF9000">
 
-  <a href="https://www.linkedin.com/in/eliasgcf/">
+  <a href="https://www.linkedin.com/in/danilo-de-sousa-97594b187/">
     <img alt="Made by" src="https://img.shields.io/badge/made%20by-Danilods">
   </a>
   
