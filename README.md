@@ -81,7 +81,7 @@ $ git clone https://github.com/danilods/gobarber-admin.git && cd gobarber-admin
 
 ### Backend para simulação de autenticação JWT
 
-## O foco do projeto é no backoffice da aplicação, de modo que sua estrutura visual possa ser evoluída. Portanto, o backend foi substituído por um simulador de autenticação com JWT e uma API simulada, utilizando json_server.
+**O foco do projeto é no backoffice da aplicação, de modo que sua estrutura visual possa ser evoluída. Portanto, o backend foi substituído por um simulador de autenticação com JWT e uma API simulada, utilizando json_server.**
 
 ## Abra uma nova janela do terminal e acesse o diretório gobarber-admin/fake-backend-api
 
@@ -104,7 +104,7 @@ $ yarn start or npm start
 ### Em caso de dúvidas quanto à criação de uma base de dados no Firebase, consulte ...
 
 
-## Abra o arquivo firebaseAPI.ts, situado no diretório src/services/firebaseAPI e preencha os campos de configuração com os dados fornecidos pelo firebase, ao criar sua base de dados.
+**Abra o arquivo firebaseAPI.ts, situado no diretório src/services/firebaseAPI e preencha os campos de configuração com os dados fornecidos pelo firebase, ao criar sua base de dados.**
 
 ```bash
 // Initialize Firebase
