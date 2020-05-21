@@ -106,6 +106,7 @@ $ yarn start or npm start
 
 ### Abra o arquivo firebaseAPI.ts, situado no diretório src/services/firebaseAPI e preencha os campos de configuração com os dados fornecidos pelo firebase, ao criar sua base de dados.
 
+```bash
 // Initialize Firebase
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
@@ -134,6 +135,8 @@ const {userFire} = useAuth();
 
 ### Pronto! A partir de agora, a aplicação fará autenticação pelo Firebase.
 
+```
+
 ### Aplicação
 
 Obs.: Antes de continuar, verifique se a API está incializada.
@@ -149,15 +152,15 @@ $ yarn
 $ yarn start
 ```
 
-### Mobile
+### Funcionalidades e componentes previstos para serem implementados:
 
-<!-- _ps: Antes de executar, lembre-se de iniciar o backend deste projeto_ -->
-
-<p align="center">
- Yet in development!
- <br />
- <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="loading">
-</p>
+1. Skeleton - LoadContent;
+2. Pagination Component;
+3. Modal Component;
+4. Chart Component;
+5. Autenticação via GMAIL;
+6. Autenticação via Facebook;
+...
 
 ## 🤔 Como contribuir?
 
