@@ -289,7 +289,7 @@ export const RankingServices = styled.section`
   margin-left: 18px;
   margin-top: 12;
   width: 46%;
-  height:
+
 
   h2 {
     color: #fff;
