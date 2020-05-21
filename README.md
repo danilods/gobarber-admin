@@ -200,4 +200,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Desenvolvido por 💜 by Danilo de Sousa 👋 [Veja meu linkedin](https://www.linkedin.com/in/danilo-de-sousa-97594b187/)
+Desenvolvido por 💜 Danilo de Sousa 👋 [Veja meu linkedin](https://www.linkedin.com/in/danilo-de-sousa-97594b187/)
