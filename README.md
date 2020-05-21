@@ -10,7 +10,7 @@
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/danilods/gobarber-admin?color=%FF9000">
 
   <a href="https://www.linkedin.com/in/danilo-de-sousa-97594b187/">
-    <img alt="Made by" src="https://img.shields.io/badge/made%20by-danilo-de-sousa-97594b187/">
+    <img alt="Made by" src="https://img.shields.io/badge/made%20by">
   </a>
   
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/danilods/gobarber-admin?color=%235636D3">
