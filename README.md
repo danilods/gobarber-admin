@@ -75,13 +75,13 @@
 ```bash
 $ git clone https://github.com/danilods/gobarber-admin.git && cd gobarber-admin
 ```
-
+**Se você for utilizar autenticação com JWT, siga os passos abaixo. Caso opte por utilizar autenticação via Firebase, pule esta estapa e vá para o item "autenticação via Firebase" **
 
 **Siga os passos a seguir**
 
 ### Backend para simulação de autenticação JWT
 
-### O foco do projeto é no backoffice da aplicação, de modo que sua estrutura visual possa ser evoluída. Portanto, o backend foi substituído por um simulador de autenticação e API, utilizando json_server com JWT.
+### O foco do projeto é no backoffice da aplicação, de modo que sua estrutura visual possa ser evoluída. Portanto, o backend foi substituído por um simulador de autenticação com JWT e uma API simulada, utilizando json_server.
 
 ### Abra uma nova janela do terminal e acesse o diretório gobarber-admin/fake-backend-api
 
@@ -92,45 +92,60 @@ $ cd ../gobarber-admin/fake-backend-api
 # Inicie o json_server
 $ yarn start or npm start
 
+# Acompanhe a inicialização do servidor.
+
 # Você poderá acessar os dados para autenticação no arquivo users.json
 # O arquivo databse.json possibilita você controlar os dados a serem utilizados em um CRUD
 
-```bash
-# Starting from the project root folder, go to backend folder
-$ cd server
 
-# Install the dependencies
-$ yarn
-
-# Create the instance of postgreSQL using docker
-$ docker run --name gofinances-postgres -e POSTGRES_USER=docker -e POSTGRES_PASSWORD=docker -e POSTGRES_DB=gofinances -p 5432:5432 -d postgres
-
-# Make sure the keys in 'ormconfig.json' to connect with your database
-# are set up correctly.
-
-# Once the services are running, run the migrations
-$ yarn typeorm migration:run
-
-# To finish, run the api service
-$ yarn dev:server
-
-# Well done, project is started!
 ```
 
-### Web
+### Autenticação via Firebase 
+### Em caso de dúvidas quanto à criação de uma base de dados no Firebase, consulte ...
 
-_Obs.: Before to continue, be sure to have the API running_
+
+### Abra o arquivo firebaseAPI.ts, situado no diretório src/services/firebaseAPI e preencha os campos de configuração com os dados fornecidos pelo firebase, ao criar sua base de dados.
+
+// Initialize Firebase
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+
+  const app = firebase.initializeApp({
+  apiKey: "API_KEY",
+    authDomain: "XXXXXX.firebaseapp.com",
+    databaseURL: "https://xxxxxx.firebaseio.com",
+    projectId: "PROJECT_ID",
+    storageBucket: "xxxxxx.appspot.com",
+    messagingSenderId: "MESSAGE_ID",
+
+});
+
+export default app;
+
+### A seguir, vá no arquivo src/routes/Route.tsx e altere o hook de autenticação da seguinte forma:
+
+Substitua:
+
+const {user} = useAuth();
+
+por
+
+const {userFire} = useAuth();
+
+### Pronto! A partir de agora, a aplicação fará autenticação pelo Firebase.
+
+### Aplicação
+
+Obs.: Antes de continuar, verifique se a API está incializada.
 
 ```bash
-# Starting from the project root folder, go to frontend folder
-$ cd web
+# Acesse o diretório da aplicação
+$ cd gobarber-admin
 
-# Install the dependencies
+# Instale as dependências
 $ yarn
 
-# Be sure the file 'src/services/api.ts' have the IP to your API
-
-# Start the client
+# Rode a aplicação
 $ yarn start
 ```
 
@@ -144,39 +159,39 @@ $ yarn start
  <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="loading">
 </p>
 
-## 🤔 How to contribute
+## 🤔 Como contribuir?
 
-**Make a fork of this repository**
+**Faça um fork para este repositório**
 
 ```bash
 # Fork using GitHub official command line
-# If you don't have the GitHub CLI, use the web site to do that.
+# Se você não tem GitHub CLI, use o website para isto.
 
 $ gh repo fork EliasGcf/gofinances
 ```
 
-**Follow the steps below**
+**Siga os passos abaixo**
 
 ```bash
-# Clone your fork
+# Clone seu fork
 $ git clone your-fork-url && cd gofinances
 
-# Create a branch with your feature
+# Criar branch com sua feature
 $ git checkout -b my-feature
 
-# Make the commit with your changes
+# Faça um commit com suas alterações
 $ git commit -m 'feat: My new feature'
 
-# Send the code to your remote branch
+# Envie seu código para o repo remoto
 $ git push origin my-feature
 ```
 
-After your pull request is merged, you can delete your branch
+Depois que seu pull request for mesclado (merged), você poderá excluir sua branch.
 
-## 📝 License
+## 📝 Licença
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-Made with 💜 by Elias Gabriel 👋 [See my linkedin](https://www.linkedin.com/in/eliasgcf/)
+Desenvolvido por 💜 by Danilo de Sousa 👋 [See my linkedin](https://www.linkedin.com/in/eliasgcf/)
