@@ -246,18 +246,17 @@ export const ServiceItem = styled.div`
   justify-content: center;
   margin-left: 20px;
   padding-left: 5px;
-
+  height: 120px;
   li {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
 
-    h3 {
+    h4 {
       display: block;
-      margin-right: 25%;
       margin-top: 10px;
-      font-weight: bold;
+      font-weight: normal;
       color: #fff;
     }
     img {
@@ -288,8 +287,9 @@ export const RankingServices = styled.section`
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 18px;
   margin-left: 18px;
-  margin-top: 32;
-  width: 50%;
+  margin-top: 12;
+  width: 46%;
+  height:
 
   h2 {
     color: #fff;

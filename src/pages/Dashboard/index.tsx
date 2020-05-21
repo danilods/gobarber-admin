@@ -18,6 +18,11 @@ import gollum from '../../assets/gollum.jpg';
 import spider from '../../assets/spider-man.png';
 import wolverine from '../../assets/wolverine.jpg';
 
+import { CircularProgressbarWithChildren
+      , CircularProgressbar,
+      buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+
 import {
   Container,
   DataCard,
@@ -161,36 +166,77 @@ const Dashboard: React.FC = () => {
           <CardItem>
             <ServiceItem>
               <li>
-                <h3>Tratamentos</h3>
-                <img src={service1} alt="" />
-                <h3>20</h3>
+              <CircularProgressbar
+                  value={50}
+                  text={`${5}/10`}
+                  background
+                  backgroundPadding={4}
+                  styles={buildStyles({
+                    backgroundColor: "#ff9000",
+                    textColor: "#fff",
+                    pathColor: "#fff",
+                    trailColor: "transparent",
+
+                  })}
+                /> <h4>Tratamentos</h4>
+
               </li>
             </ServiceItem>
           </CardItem>
           <CardItem>
             <ServiceItem>
               <li>
-                <h3>Barba</h3>
-                <img src={service2} alt="" />
-                <h3>15</h3>
+                <CircularProgressbar
+                  value={50}
+                  text={`${5}/10`}
+                  background
+                  backgroundPadding={4}
+                  styles={buildStyles({
+                    backgroundColor: "#3e98c7",
+                    textColor: "#fff",
+                    pathColor: "#fff",
+                    trailColor: "transparent",
+
+                  })}
+                /> <h4>Barba</h4>
               </li>
             </ServiceItem>
           </CardItem>
           <CardItem>
             <ServiceItem>
               <li>
-                <h3>Cabelo</h3>
-                <img src={service3} alt="" />
-                <h3>15</h3>
+              <CircularProgressbar
+                  value={50}
+                  text={`${5}/10`}
+                  background
+                  backgroundPadding={4}
+                  styles={buildStyles({
+                    backgroundColor: "#c1c",
+                    textColor: "#fff",
+                    pathColor: "#fff",
+                    trailColor: "transparent",
+
+                  })}
+                /> <h4>Cabelo</h4>
               </li>
             </ServiceItem>
           </CardItem>
           <CardItem>
             <ServiceItem>
               <li>
-                <h3>Produtos</h3>
-                <img src={service4} alt="" />
-                <h3>55</h3>
+              <CircularProgressbar
+                  value={50}
+                  text={`${5}/10`}
+                  background
+                  backgroundPadding={4}
+                  styles={buildStyles({
+                    backgroundColor: "#D62246",
+                    textColor: "#fff",
+                    pathColor: "#fff",
+                    trailColor: "transparent",
+
+                  })}
+                /> <h4>Produtos</h4>
               </li>
             </ServiceItem>
           </CardItem>
