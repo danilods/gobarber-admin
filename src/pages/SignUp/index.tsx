@@ -16,7 +16,7 @@ import * as Yup from 'yup';
 
 import {Link, useHistory} from 'react-router-dom';
 
-import api from '../../services/api';
+//import api from '../../services/api';
 
 import {useToast} from '../../hooks/ToastContext';
 
@@ -55,7 +55,7 @@ const SignUp: React.FC = () => {
         abortEarly: false,
       });
 
-      await api.post('users', data);
+     // await api.post('users', data);
 
       addToast({
         type: 'success',

@@ -9,7 +9,7 @@ const SidebarConfig = [
     icon: <Icon.FcLibrary size={20}/>,
     color: 'blue',
     permissions: ["admin", "editor"],
-    navLink: "/"
+    navLink: "/dashboard"
   },
   {
     id: "profissionais",
@@ -31,12 +31,12 @@ const SidebarConfig = [
   },
   {
     id: "atendimentos",
-    title: "Atendimentos",
+    title: "Agendamentos",
     type: "item",
     icon: <Icon.FcAbout size={20} />,
     color: 'red',
     permissions: ["admin", "editor"],
-    navLink: "/atendimentos"
+    navLink: "/appointments"
   }
 ]
 

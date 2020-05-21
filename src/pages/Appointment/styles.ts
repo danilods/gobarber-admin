@@ -69,8 +69,7 @@ export const DataCard = styled.section`
 `;
 
 export const CardItem = styled.div`
-  background: #17181c;
-  padding: 22px 32px;
+  background: #191c24;  padding: 22px 32px;
   border-radius: 5px;
   color: #fff;
   header {

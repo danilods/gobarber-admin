@@ -4,8 +4,9 @@ import {shade} from 'polished';
 export const Container = styled.aside`
   height: 100%;
   width: 264px;
-  background: #191c24;
+  background: #17181c;
   color: #b3b3b3;
+
 
   display: flex;
   flex-direction: column;
@@ -13,7 +14,6 @@ export const Container = styled.aside`
 
   > div {
     padding: 25px;
-
   }
 
 `;
@@ -28,6 +28,7 @@ export const MainLogo = styled.button`
   align-items: center;
   padding: 15px 25px;
 
+
   img {
     width: 62px;
     height: 62px;
@@ -39,23 +40,37 @@ export const MainLogo = styled.button`
     margin-left: 10px;
     font-weight: bold;
   }
+
+  span {
+    margin-top: 14px;
+    margin-left: 4px;
+    font-size: 10px;
+    color: #ff9000;
+    font-weight: bold;
+  }
 `;
 
 export const User = styled.div`
-
 list-style: none;
 text-decoration: none;
-margin-top:30px;
-margin-left: 50px;
+width: 100%;
+margin-top: -10px;
+height: 180px;
+display: flex;
+margin-bottom: 20px;
 display: flex;
 align-items: center;
+justify-content: center;
+background: #09090a;
 
+li {
   img {
     width: 82px;
     height: 82px;
     border-radius: 50%;
     margin-left: 20px;
   }
+}
 `;
 
 export const Nav = styled.nav`
@@ -109,7 +124,7 @@ export const Nav = styled.nav`
           }
 
           &:hover {
-            color: ${shade(0.2, '#2c2e33')};
+            color: ${shade(0.3, '#fff')};
           }
 
         }

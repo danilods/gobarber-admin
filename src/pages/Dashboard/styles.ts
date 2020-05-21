@@ -1,4 +1,4 @@
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 const pulse = keyframes`
     0% {
@@ -13,16 +13,14 @@ const pulse = keyframes`
         -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
         box-shadow: 0 0 0 0 rgba(204,169,44, 0);
     }
-
 `;
 
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 20px 20px;
   background: #000;
-
 `;
 
 export const List = styled.div`
@@ -32,7 +30,6 @@ export const List = styled.div`
   display: flex;
 `;
 
-
 export const CardContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -41,7 +38,7 @@ export const CardContainer = styled.section`
 `;
 
 export const Card = styled.div`
-  background: #191c24;
+  background: #17181c;
   padding: 22px 12px;
   border-radius: 5px;
   color: #fff;
@@ -59,7 +56,6 @@ export const Card = styled.div`
       font-size: 13px;
       margin-top: 10px;
     }
-
   }
   h1 {
     margin-top: 14px;
@@ -69,12 +65,12 @@ export const Card = styled.div`
   }
 
   img {
-      height: 68px;
-      width: 68px;
-      margin-left: 6;
-      border-radius: 50%;
-      border: 1px solid transparent;
-    }
+    height: 68px;
+    width: 68px;
+    margin-left: 6;
+    border-radius: 50%;
+    border: 1px solid transparent;
+  }
 `;
 
 export const DataCard = styled.section`
@@ -85,7 +81,8 @@ export const DataCard = styled.section`
 `;
 
 export const CardItem = styled.div`
-  background: #191c24;  padding: 22px 32px;
+  background: #17181c;
+  padding: 22px 32px;
   border-radius: 5px;
   color: #fff;
   header {
@@ -112,22 +109,33 @@ export const CardItem = styled.div`
 export const TableContainer = styled.section`
   display: flex;
   flex-direction: row;
-  margin-top: 24px;
+  margin-top: 14px;
   table {
     width: 75%;
     border-spacing: 0 8px;
+
+    thead {
+      h2 {
+        color: #fff;
+      }
+    }
+    tr {
+      border-radius: 20%;
+    }
+
     th {
       color: #969cb3;
       font-weight: normal;
-      padding: 20px 32px;
+      padding: 20px 18px;
       text-align: left;
       font-size: 16px;
-      line-height: 24px;
+      line-height: 20px;
     }
+
     td {
-      padding: 20px 32px;
+      padding: 18px 12px;
       border: 0;
-      background: #191c24;
+      background: #17181c;
       font-size: 16px;
       font-weight: normal;
       color: #fff;
@@ -139,11 +147,11 @@ export const TableContainer = styled.section`
         align-items: center;
 
         img {
-            height: 48px;
-            width: 48px;
-            border-radius: 50%;
-            border-color: transparent;
-            margin-right: 25px;
+          height: 42px;
+          width: 42px;
+          border-radius: 50%;
+          border-color: transparent;
+          margin-right: 15px;
         }
       }
 
@@ -152,32 +160,13 @@ export const TableContainer = styled.section`
         align-items: center;
 
         img {
+          height: 28px;
+          width: 28px;
 
-            height: 28px;
-            width: 28px;
-
-            border-color: transparent;
-            margin-right: 10px;
-          }
+          border-color: transparent;
+          margin-right: 10px;
+        }
       }
-
-      &.title {
-        color: #fff;
-        line-height: 16px;
-      }
-      &.income {
-        color: #12a454;
-      }
-      &.outcome {
-        color: #e83f5b;
-      }
-
-    }
-    td:first-child {
-      border-radius: 8px 0 0 8px;
-    }
-    td:last-child {
-      border-radius: 0 8px 8px 0;
     }
   }
 `;
@@ -198,15 +187,25 @@ export const User = styled.div`
     text-align: left;
     margin-right: 30px;
 
-     div {
+    div {
       height: 12px;
       width: 12px;
-      background: #7CFC00;
       border-radius: 50%;
       border-color: transparent;
       animation: ${pulse} 1.5s ease-in-out;
       animation-iteration-count: infinite;
 
+      &.available {
+        background: #7cfc00;
+      }
+
+      &.working {
+        background: #cf3261;
+      }
+
+      &.offline {
+        background: #666360;
+      }
     }
 
     strong {
@@ -231,7 +230,7 @@ export const User = styled.div`
   img {
     min-width: 78px;
     min-height: 78px;
-    max-height:78px;
+    max-height: 78px;
     max-width: 78px;
     border-radius: 50%;
     margin-right: 15px;
@@ -244,56 +243,45 @@ export const ServiceItem = styled.div`
   list-style: none;
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-left: 20px;
   padding-left: 5px;
-  div {
-    text-align: left;
-    margin-right: 0px;
 
-     div {
-      height: 12px;
-      width: 12px;
-      background: #7CFC00;
-      border-radius: 20%;
-      border-color: transparent
-    }
-
-    strong {
-      display: block;
-      font-size: 18px;
-      font-weight: bold;
-      color: #fff;
-    }
+  li {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 
     h3 {
       display: block;
-      margin-top: 20px;
-      font-size: 20px;
+      margin-right: 25%;
+      margin-top: 10px;
+      font-weight: bold;
       color: #fff;
     }
-  }
-
-  img {
-    min-width: 78px;
-    min-height: 78px;
-    max-height:78px;
-    max-width: 78px;
-    border-radius: 20%;
-    margin-right: 15px;
-    margin-left: 0;
-    object-fit: fill;
+    img {
+      min-width: 78px;
+      min-height: 78px;
+      max-height: 78px;
+      max-width: 78px;
+      border-radius: 20%;
+      margin-top: 20px;
+      margin-right: 15px;
+      margin-left: 0;
+      object-fit: fill;
+    }
   }
 `;
 
-
 export const ServiceContainer = styled.div`
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-     section {
-       width: 50%;
-     }
-  `;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  section {
+    width: 50%;
+  }
+`;
 
 export const RankingServices = styled.section`
   display: grid;
@@ -301,5 +289,9 @@ export const RankingServices = styled.section`
   grid-gap: 18px;
   margin-left: 18px;
   margin-top: 32;
+  width: 50%;
 
+  h2 {
+    color: #fff;
+  }
 `;

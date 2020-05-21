@@ -1,6 +1,6 @@
-import React, {useCallback, useRef} from 'react';
+import React, { useCallback, useRef } from 'react';
 
-import {FiLogIn, FiMail, FiLock, FiSend} from 'react-icons/fi';
+import { FiLogIn, FiMail, FiLock, FiSend } from 'react-icons/fi';
 
 import { FormHandles } from '@unform/core';
 
@@ -10,35 +10,36 @@ import * as Yup from 'yup';
 
 import { Link, useHistory } from 'react-router-dom';
 
-import {useAuth} from '../../hooks/AuthContext';
+import { useAuth } from '../../hooks/AuthContext';
 
-import {useToast} from '../../hooks/ToastContext';
+import { useToast } from '../../hooks/ToastContext';
 
 import getValidationErrors from '../../utils/getValidationErrors';
 
 import logoImg from '../../assets/logo.svg';
+import nodejs from '../../assets/nodejs-icon.svg'
+import google from '../../assets/firebase.svg'
+import fireicon from '../../assets/google.svg'
+
 
 import Input from '../../components/Input';
 
 import Button from '../../components/Button';
 
-import {Container, Content, AnimationContainer, Background} from './styles';
+import { Container, Content, AnimationContainer, Background, SignInMethods } from './styles';
 
-interface SignInFormData  {
+interface SignInFormData {
   email: string;
   password: string;
 }
 
 const SignIn: React.FC = () => {
-
-
   const formRef = useRef<FormHandles>(null);
 
-  const {signInFirebase} = useAuth();
+  const { signInFirebase, signIn } = useAuth();
 
   const { addToast } = useToast();
   const history = useHistory();
-
 
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
@@ -47,25 +48,24 @@ const SignIn: React.FC = () => {
 
         const schema = Yup.object().shape({
           email: Yup.string()
-          .required('E-mail obrigatório')
-          .email('digite um e-mail válido'),
+            .required('E-mail obrigatório')
+            .email('digite um e-mail válido'),
           password: Yup.string().required('Senha obrigatória'),
         });
 
         await schema.validate(data, {
           abortEarly: false,
         });
-        await signInFirebase({
+        await signIn({
           email: data.email,
           password: data.password,
         });
 
         history.push('/dashboard');
-
-      } catch(err) {
+      } catch (err) {
         console.log(err);
 
-        if(err instanceof Yup.ValidationError){
+        if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
           formRef.current?.setErrors(errors);
           return;
@@ -73,52 +73,55 @@ const SignIn: React.FC = () => {
         addToast({
           type: 'error',
           title: 'Erro na autenticação',
-          description: 'Ocorreu um erro ao fazer login. Cheque suas credenciais.'
+          description:
+            'Ocorreu um erro ao fazer login. Cheque suas credenciais.',
         });
-
       }
-
-    }, [signInFirebase, addToast, history],
+    },
+    [signInFirebase, addToast, history],
   );
 
   return (
     <Container>
-     <Content>
-       <AnimationContainer>
-          <img src={logoImg} alt="4Men"/>
+      <Content>
+        <AnimationContainer>
+          <img src={logoImg} alt="4Men" />
 
           <Form ref={formRef} onSubmit={handleSubmit}>
-
             <h1>Faça seu Login</h1>
 
             <Input name="email" icon={FiMail} placeholder="Email" />
 
-            <Input name="password"
-            icon={FiLock}
-            type="password"
-            placeholder="Senha" />
+            <Input
+              name="password"
+              icon={FiLock}
+              type="password"
+              placeholder="Senha"
+            />
 
             <Button type="submit">Entrar</Button>
+            <Link to="/forgot">
+              <FiSend />
+              Esqueci minha senha
+            </Link>
+            <SignInMethods>
+              <img src={fireicon} alt="firebase"/>
+              <img src={nodejs} alt="node"/>
+              <img src={google} alt="google"/>
 
-          <Link to="/forgot">
-            <FiSend />
-            Esqueci minha senha
-          </Link>
+            </SignInMethods>
 
           </Form>
 
           <Link to="/signup">
-          <FiLogIn />
+            <FiLogIn />
             Criar uma conta
           </Link>
-      </AnimationContainer>
-    </Content>
-    <Background />
-  </Container>
+        </AnimationContainer>
+      </Content>
+      <Background />
+    </Container>
   );
-
-}
-
-
+};
 
 export default SignIn;

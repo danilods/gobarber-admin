@@ -17,7 +17,7 @@ export default createGlobalStyle`
     body {
       text-rendering: optimizeLegibility !important;
       -webkit-font-smoothing: antialiased !important;
-      background: #191c24;
+      background: #17181c;
     }
 
     body, input, button {

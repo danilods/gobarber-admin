@@ -36,7 +36,7 @@ export const TableContainer = styled.section`
     td {
       padding: 20px 32px;
       border: 0;
-      background: #191c24;
+      background: #17181c;
       font-size: 16px;
       font-weight: normal;
       color: #fff;

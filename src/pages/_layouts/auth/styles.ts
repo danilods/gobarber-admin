@@ -1,43 +1,21 @@
-import styled, {keyframes} from 'styled-components';
-
-const appearFromLeft = keyframes`
-    from {
-      opacity: 0;
-      transform: translateX(-100px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-`;
-
-const appearFromRight = keyframes`
-    from {
-      opacity: 0;
-      transform: translateX(100px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-`;
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Container = styled.div`
-    flex: 1;
-    display: flex;
+  flex: 1;
+  display: flex;
 `;
 
 export const Content = styled.div`
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 `;
 
 export const TableContainer = styled.section`
@@ -58,7 +36,6 @@ export const TableContainer = styled.section`
       line-height: 24px;
     }
     td {
-
       padding: 20px 32px;
       border: 0;
       background: #191c24;
@@ -73,12 +50,12 @@ export const TableContainer = styled.section`
         align-items: center;
 
         img {
-            height: 48px;
-            width: 48px;
-            border-radius: 50%;
-            border-color: transparent;
-            margin-right: 25px;
-          }
+          height: 48px;
+          width: 48px;
+          border-radius: 50%;
+          border-color: transparent;
+          margin-right: 25px;
+        }
       }
 
       a {
@@ -86,27 +63,14 @@ export const TableContainer = styled.section`
         align-items: center;
 
         img {
+          height: 28px;
+          width: 28px;
 
-            height: 28px;
-            width: 28px;
-
-            border-color: transparent;
-            margin-right: 20px;
-            margin-left: 20px;
-          }
+          border-color: transparent;
+          margin-right: 20px;
+          margin-left: 20px;
+        }
       }
-
-      &.title {
-        color: #fff;
-        line-height: 16px;
-      }
-      &.income {
-        color: #12a454;
-      }
-      &.outcome {
-        color: #e83f5b;
-      }
-
     }
     td:first-child {
       border-radius: 8px 0 0 8px;

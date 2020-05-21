@@ -14,14 +14,14 @@ interface RouteProps extends ReactDOMRouteProps {
 }
 
 const Route: React.FC<RouteProps> = ({ isPrivate = false, component: Component,...rest }) => {
-  const {userFire, userJWT} = useAuth();
+  const {user} = useAuth();
 
-  const Layout = !!userFire || !!userJWT ? DefaultLayout : AuthLayout;
+  const Layout = !!user ? DefaultLayout : AuthLayout;
 
   return (
     <ReactDOMRoute {...rest} render={({location}) => {
 
-      return isPrivate === !!userFire || !! userJWT ? (
+      return isPrivate === !!user ? (
         <Layout>
           <Suspense fallback={<Loader />}>
           <Component />

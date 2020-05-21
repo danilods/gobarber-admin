@@ -10,9 +10,7 @@ const Loader: React.FC = () => {
     <Container>
 
         <img src={logo} alt=""/>
-
-
-
+        <h3>Carregando...</h3>
      </Container>
   );
 }

@@ -101,8 +101,21 @@ export const Background = styled.div`
     flex: 1;
     background: url(${signUpBackgroundImg}) no-repeat center;
     background-size: cover;
-
     animation: ${appearFromRight} 1.5s;
 
 `;
 
+export const SignInMethods = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 16px;
+
+    img {
+      height: 32px;
+      width: 32px;
+      border-radius: 50%;
+      margin-left: 10px;
+    }
+`;

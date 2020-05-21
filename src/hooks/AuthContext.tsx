@@ -5,7 +5,13 @@ import * as firebase from 'firebase/app';
 
 interface AuthState {
   token: string;
-  user: object;
+  user:UserType;
+}
+
+interface UserType {
+  email: string;
+  name: string;
+  id: string;
 }
 
 interface SignInCredentials {
@@ -15,7 +21,7 @@ interface SignInCredentials {
 
 interface AuthContextData {
   userFire: firebase.User;
-  userJWT: object;
+  user: UserType;
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
   signInFirebase(credentials: SignInCredentials): Promise<void>;
@@ -60,7 +66,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
 
   const signIn = useCallback( async({email, password}) => {
-    const response = await api.post('sessions', {
+    const response = await api.post('/auth/login', {
       email,
       password,
     });
@@ -84,7 +90,7 @@ export const AuthProvider: React.FC = ({ children }) => {
      if(user) {
       setState({initialising: !user, user: user});
      }
-     localStorage.setItem('@4Men:user', JSON.stringify(user));
+     localStorage.setItem('@Gobarber:user', JSON.stringify(user));
 
      console.log(user);
     } catch(error) {
@@ -94,12 +100,14 @@ export const AuthProvider: React.FC = ({ children }) => {
 
 
   const signOut = useCallback(() => {
-      localStorage.removeItem('4Men:user');
+      localStorage.removeItem('@Gobarber:token');
+      localStorage.removeItem('@Gobarber:user');
       setData({} as AuthState);
+
   }, []);
 
   const signOutFirebase = useCallback(() => {
-      localStorage.removeItem('4Men:user');
+      localStorage.removeItem('@Gobarber:user');
       setState({} as AuthStateUser);
       app.auth().signOut();
   }, []);
@@ -107,7 +115,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   const sendPasswordResetEmail = useCallback(async(email) => {
     try {
      await app.auth().sendPasswordResetEmail(email);
-     localStorage.removeItem('4Men:user');
+     localStorage.removeItem('@4Men:user');
     }catch(error) {
       console.log(error);
     }
@@ -115,7 +123,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{
-      userJWT: data.user,
+      user: data.user,
       userFire: state.user,
       signIn, signOut,
       signInFirebase,

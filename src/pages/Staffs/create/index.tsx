@@ -14,7 +14,7 @@ import * as Yup from 'yup';
 
 import {useHistory} from 'react-router-dom';
 
-import api from '../../../services/api';
+//import api from '../../../services/api';
 
 import {useToast} from '../../../hooks/ToastContext';
 
@@ -54,7 +54,6 @@ const CreateStaff: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const { addToast } = useToast();
   const history = useHistory();
-  const [isModalVisible, setIsModalVisible] = useState(false);
   const [stateService, setStateService] =
   useState<firebase.firestore.DocumentData>(() => {
     return [] as firebase.firestore.DocumentData;

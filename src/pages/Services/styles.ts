@@ -57,7 +57,7 @@ export const CardContainer = styled.section`
 `;
 
 export const Card = styled.div`
-  background: #191c24;
+  background: #17181c;
   padding: 22px 12px;
   border-radius: 5px;
   color: #fff;
