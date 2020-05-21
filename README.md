@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src=".github/logo.svg" alt="GoBarberAdmin" width="250px">
+![Alt text](/public/gobarber-logo.png?raw=true "gobarber-admin")
 </h1>
 
 <h3 align="center">
@@ -7,10 +7,10 @@
 </h3>
 
 <p align="center">
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/danilods/gobarber-admin?color=%235636D3">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/danilods/gobarber-admin?color=%FF9000">
 
-  <a href="https://www.linkedin.com/in/eliasgcf/">
-    <img alt="Made by" src="https://img.shields.io/badge/made%20by-Danilods">
+  <a href="https://www.linkedin.com/in/danilo-de-sousa-97594b187/">
+    <img alt="Made by" src="https://img.shields.io/badge/made%20by-Danilo%20de%20Sousa-orange">
   </a>
   
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/danilods/gobarber-admin?color=%235636D3">
@@ -38,7 +38,7 @@
 
 ![Alt text](/public/mockup@2x.png?raw=true "gobarber-admin")
 
-## 💰 About the project
+## 💰 Sobre o projeto
 
   O GoBarber Admin é um projeto desenvolvido a partir da participação no Bootcamp GoStack da #RocketSeat. Durante o curso, a metodologia de ensino é voltada diretamente para atividades práticas, de modo a refletir, ao máximo, o ambiente real encontrado no mercado de trabalho. A partir da ideia da aplicação GoBarber ensinada no BootCamp, houve a iniciativa particular de praticar os conceitos ministrados no curso; sendo assim, essa atividade resultou na criação de um ambiente administrativo, abstraindo a simulação da gestão da aplicação. 
 
@@ -61,10 +61,10 @@
 - [EditorConfig](https://editorconfig.org/)
 
 
-## 💻 Getting started
+## 💻 Iniciando
 
 
-### Requirements
+### Requisitos
 
 - [Node.js](https://nodejs.org/en/)
 - [Yarn](https://classic.yarnpkg.com/) or [npm](https://www.npmjs.com/)
@@ -75,15 +75,15 @@
 ```bash
 $ git clone https://github.com/danilods/gobarber-admin.git && cd gobarber-admin
 ```
-**Se você for utilizar autenticação com JWT, siga os passos abaixo. Caso opte por utilizar autenticação via Firebase, pule esta estapa e vá para o item "autenticação via Firebase" **
+**Se você for utilizar autenticação com JWT, siga os passos abaixo. Caso opte por utilizar autenticação via Firebase, pule esta estapa e vá para o item "autenticação via Firebase"**
 
 **Siga os passos a seguir**
 
 ### Backend para simulação de autenticação JWT
 
-### O foco do projeto é no backoffice da aplicação, de modo que sua estrutura visual possa ser evoluída. Portanto, o backend foi substituído por um simulador de autenticação com JWT e uma API simulada, utilizando json_server.
+**O foco do projeto é no backoffice da aplicação, de modo que sua estrutura visual possa ser evoluída. Portanto, o backend foi substituído por um simulador de autenticação com JWT e uma API simulada, utilizando json_server.**
 
-### Abra uma nova janela do terminal e acesse o diretório gobarber-admin/fake-backend-api
+## **Abra uma nova janela do terminal e acesse o diretório gobarber-admin/fake-backend-api**
 
 ```bash
 # Starting from the project root folder, go to backend folder
@@ -104,7 +104,7 @@ $ yarn start or npm start
 ### Em caso de dúvidas quanto à criação de uma base de dados no Firebase, consulte ...
 
 
-### Abra o arquivo firebaseAPI.ts, situado no diretório src/services/firebaseAPI e preencha os campos de configuração com os dados fornecidos pelo firebase, ao criar sua base de dados.
+**Abra o arquivo firebaseAPI.ts, situado no diretório src/services/firebaseAPI e preencha os campos de configuração com os dados fornecidos pelo firebase, ao criar sua base de dados.**
 
 ```bash
 // Initialize Firebase
@@ -197,4 +197,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Desenvolvido por 💜 by Danilo de Sousa 👋 [See my linkedin](https://www.linkedin.com/in/eliasgcf/)
+Desenvolvido por 💜 by Danilo de Sousa 👋 [Veja meu linkedin](https://www.linkedin.com/in/danilo-de-sousa-97594b187/)
