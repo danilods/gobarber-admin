@@ -75,15 +75,15 @@
 ```bash
 $ git clone https://github.com/danilods/gobarber-admin.git && cd gobarber-admin
 ```
-**Se você for utilizar autenticação com JWT, siga os passos abaixo. Caso opte por utilizar autenticação via Firebase, pule esta estapa e vá para o item "autenticação via Firebase" **
+**Se você for utilizar autenticação com JWT, siga os passos abaixo. Caso opte por utilizar autenticação via Firebase, pule esta estapa e vá para o item "autenticação via Firebase"**
 
 **Siga os passos a seguir**
 
 ### Backend para simulação de autenticação JWT
 
-**O foco do projeto é no backoffice da aplicação, de modo que sua estrutura visual possa ser evoluída. Portanto, o backend foi substituído por um simulador de autenticação com JWT e uma API simulada, utilizando json_server.
+**O foco do projeto é no backoffice da aplicação, de modo que sua estrutura visual possa ser evoluída. Portanto, o backend foi substituído por um simulador de autenticação com JWT e uma API simulada, utilizando json_server.**
 
-## Abra uma nova janela do terminal e acesse o diretório gobarber-admin/fake-backend-api**
+## **Abra uma nova janela do terminal e acesse o diretório gobarber-admin/fake-backend-api**
 
 ```bash
 # Starting from the project root folder, go to backend folder
@@ -197,4 +197,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Desenvolvido por 💜 by Danilo de Sousa 👋 [See my linkedin](https://www.linkedin.com/in/eliasgcf/)
+Desenvolvido por 💜 by Danilo de Sousa 👋 [linkedin](https://www.linkedin.com/in/danilodsousa/)
