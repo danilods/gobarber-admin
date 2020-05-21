@@ -1,0 +1,18 @@
+{
+  "name": "fake-api-jwt-json-server",
+  "version": "1.0.0",
+  "description": "Simple Fake API with JWT",
+  "main": "server.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "npx nodemon server.js",
+    "dev": "json-server --watch ./database.json"
+  },
+  "author": "Alecsander",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "json-server": "^0.16.1",
+    "jsonwebtoken": "^8.5.1",
+    "prettier": "^1.19.1"
+  }
+}

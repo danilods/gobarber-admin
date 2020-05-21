@@ -1,0 +1,35 @@
+{
+  "staffs": [{
+          "id": 1,
+          "firstName": "Bill",
+          "lastName": "Gates",
+          "email": "bill@microsoft.com"
+      },
+      {
+          "id": 2,
+          "firstName": "Mark",
+          "lastName": "Zuckerberg",
+          "email": "mark@facebook.com"
+      },
+      {
+          "id": 3,
+          "firstName": "Jeff",
+          "lastName": "Bezos",
+          "email": "jeff@amazon.com"
+      }
+  ],
+  "services": [{
+          "id": 1,
+          "name": "Microsoft"
+      },
+      {
+          "id": 2,
+          "name": "Facebook"
+      },
+      {
+          "id": 3,
+          "name": "Amazon"
+      }
+  ]
+
+}
