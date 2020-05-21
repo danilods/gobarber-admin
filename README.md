@@ -58,6 +58,10 @@
 - [Eslint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
 - [EditorConfig](https://editorconfig.org/)
+- [Lazy Loading](https://pt.wikipedia.org/wiki/Lazy_loading)
+- [Code Splitting](https://pt-br.reactjs.org/docs/code-splitting.html)
+
+
 
 
 ## 💻 Iniciando
