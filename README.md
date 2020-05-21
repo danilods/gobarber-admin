@@ -1,6 +1,5 @@
 <h1 align="center">
-![Alt text](/public/gobarber-logo.png?raw=true "gobarber-admin")
-</h1>
+<img src="public/gobarber-logo.png" title="GobarberAdmin"></h1>
 
 <h3 align="center">
   Backend Admin Template
