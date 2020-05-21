@@ -7,20 +7,14 @@ import img3 from '../../assets/stark.jpg';
 
 import users from '../../assets/users.svg';
 import money from '../../assets/dollar-sign.svg';
-import schedule from '../../assets/clock.svg';
-import service1 from '../../assets/creme.svg';
-import service2 from '../../assets/navalha.svg';
-import service3 from '../../assets/placa.svg';
-import service4 from '../../assets/barbeiro.svg';
+import calendar from '../../assets/calendar.svg';
 
 import major from '../../assets/major.jpg';
 import gollum from '../../assets/gollum.jpg';
 import spider from '../../assets/spider-man.png';
 import wolverine from '../../assets/wolverine.jpg';
 
-import { CircularProgressbarWithChildren
-      , CircularProgressbar,
-      buildStyles } from 'react-circular-progressbar';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 import {
@@ -106,7 +100,7 @@ const Dashboard: React.FC = () => {
         <CardItem>
           <header>
             <p>Agendamentos</p>
-            <img src={schedule} alt="" />
+            <img src={calendar} alt="" />
           </header>
           <h1>22</h1>
         </CardItem>
@@ -115,71 +109,74 @@ const Dashboard: React.FC = () => {
       <TableContainer>
         <table>
           <thead>
-
             <tr>
               <th>Cliente</th>
               <th>Horário</th>
               <th>Serviço</th>
-
-
             </tr>
           </thead>
 
           <tbody>
             <tr>
-              <td ><div>
+              <td>
+                <div>
                   <img src={major} alt="" />
                   Major e Deizano
-                </div></td>
-              <td >18/05/2020 - 10:00h</td>
+                </div>
+              </td>
+              <td>18/05/2020 - 10:00h</td>
               <td>Corte de cabelo</td>
             </tr>
 
             <tr>
-              <td ><div>
+              <td>
+                <div>
                   <img src={gollum} alt="" />
                   Mr. Gollum
-                </div></td>
-              <td >18/05/2020 - 10:00h</td>
+                </div>
+              </td>
+              <td>18/05/2020 - 10:00h</td>
               <td>Corte de cabelo</td>
             </tr>
             <tr>
-              <td ><div>
+              <td>
+                <div>
                   <img src={spider} alt="" />
                   Spider Man
-                </div></td>
-              <td >18/05/2020 - 10:00h</td>
+                </div>
+              </td>
+              <td>18/05/2020 - 10:00h</td>
               <td>Corte de cabelo</td>
             </tr>
             <tr>
-              <td ><div>
+              <td>
+                <div>
                   <img src={wolverine} alt="" />
                   Mr. Logan
-                </div></td>
-              <td >18/05/2020 - 10:00h</td>
+                </div>
+              </td>
+              <td>18/05/2020 - 10:00h</td>
               <td>Corte de cabelo</td>
             </tr>
-
           </tbody>
         </table>
         <RankingServices>
           <CardItem>
             <ServiceItem>
               <li>
-              <CircularProgressbar
-                  value={50}
-                  text={`${5}/10`}
+                <CircularProgressbar
+                  value={20}
+                  text={`${4}/10`}
                   background
                   backgroundPadding={4}
                   styles={buildStyles({
-                    backgroundColor: "#ff9000",
-                    textColor: "#fff",
-                    pathColor: "#fff",
-                    trailColor: "transparent",
-
+                    backgroundColor: '#ff9000',
+                    textColor: '#fff',
+                    pathColor: '#fff',
+                    trailColor: 'transparent',
                   })}
-                /> <h4>Tratamentos</h4>
-
+                />{' '}
+                <h4>Tratamentos</h4>
               </li>
             </ServiceItem>
           </CardItem>
@@ -187,56 +184,56 @@ const Dashboard: React.FC = () => {
             <ServiceItem>
               <li>
                 <CircularProgressbar
-                  value={50}
-                  text={`${5}/10`}
+                  value={40}
+                  text={`${4}/10`}
                   background
                   backgroundPadding={4}
                   styles={buildStyles({
-                    backgroundColor: "#3e98c7",
-                    textColor: "#fff",
-                    pathColor: "#fff",
-                    trailColor: "transparent",
-
+                    backgroundColor: '#3e98c7',
+                    textColor: '#fff',
+                    pathColor: '#fff',
+                    trailColor: 'transparent',
                   })}
-                /> <h4>Barba</h4>
+                />{' '}
+                <h4>Barba</h4>
               </li>
             </ServiceItem>
           </CardItem>
           <CardItem>
             <ServiceItem>
               <li>
-              <CircularProgressbar
-                  value={50}
-                  text={`${5}/10`}
+                <CircularProgressbar
+                  value={90}
+                  text={`${9}/10`}
                   background
                   backgroundPadding={4}
                   styles={buildStyles({
-                    backgroundColor: "#c1c",
-                    textColor: "#fff",
-                    pathColor: "#fff",
-                    trailColor: "transparent",
-
+                    backgroundColor: '#c1c',
+                    textColor: '#fff',
+                    pathColor: '#fff',
+                    trailColor: 'transparent',
                   })}
-                /> <h4>Cabelo</h4>
+                />{' '}
+                <h4>Cabelo</h4>
               </li>
             </ServiceItem>
           </CardItem>
           <CardItem>
             <ServiceItem>
               <li>
-              <CircularProgressbar
-                  value={50}
-                  text={`${5}/10`}
+                <CircularProgressbar
+                  value={70}
+                  text={`${7}/10`}
                   background
                   backgroundPadding={4}
                   styles={buildStyles({
-                    backgroundColor: "#D62246",
-                    textColor: "#fff",
-                    pathColor: "#fff",
-                    trailColor: "transparent",
-
+                    backgroundColor: '#D62246',
+                    textColor: '#fff',
+                    pathColor: '#fff',
+                    trailColor: 'transparent',
                   })}
-                /> <h4>Produtos</h4>
+                />{' '}
+                <h4>Produtos</h4>
               </li>
             </ServiceItem>
           </CardItem>

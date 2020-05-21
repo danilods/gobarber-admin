@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from 'react';
 
-import { FiArrowLeft, FiMail, FiUser, FiLock } from 'react-icons/fi';
+import { FiArrowLeft, FiMail } from 'react-icons/fi';
 
 import { FormHandles } from '@unform/core';
 
@@ -85,7 +85,9 @@ const SignUp: React.FC = () => {
 
             <Input name="email" icon={FiMail} placeholder="Digite seu Email" />
 
-            <Button type="submit">Enviar email de recuperação</Button>
+            <Button type="submit">
+              Enviar email de recuperação
+            </Button>
           </Form>
           <Link to="/">
             <FiArrowLeft />

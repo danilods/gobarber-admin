@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const pulse = keyframes`
     0% {
@@ -246,7 +246,7 @@ export const ServiceItem = styled.div`
   justify-content: center;
   margin-left: 20px;
   padding-left: 5px;
-  height: 120px;
+  max-height: 160px;
   li {
     display: flex;
     align-items: center;

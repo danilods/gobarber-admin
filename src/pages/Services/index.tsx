@@ -12,9 +12,7 @@ import { Form } from '@unform/web';
 
 import * as Yup from 'yup';
 
-import { Link, useHistory } from 'react-router-dom';
-
-import { useAuth } from '../../hooks/AuthContext';
+import { Link } from 'react-router-dom';
 
 import { useToast } from '../../hooks/ToastContext';
 
@@ -54,10 +52,7 @@ interface serviceProps {
 const Services: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const { userFire } = useAuth();
-
   const { addToast } = useToast();
-  const history = useHistory();
 
   const [serviceData, setServiceData] = useState<
     firebase.firestore.DocumentData
@@ -83,7 +78,7 @@ const Services: React.FC = () => {
         const dataService = {
           tipo_servico: data.tipo,
           valor: data.valor,
-          provider_id: userFire.uid,
+          provider_id: 'provider_id',
           images: [],
         };
 
@@ -100,6 +95,7 @@ const Services: React.FC = () => {
           formRef.current?.setErrors(errors);
           return;
         }
+        console.log(err);
         addToast({
           type: 'error',
           title: 'Erro no cadastro',
@@ -107,7 +103,7 @@ const Services: React.FC = () => {
         });
       }
     },
-    [addToast, history],
+    [addToast],
   );
 
   useEffect(() => {
@@ -120,25 +116,29 @@ const Services: React.FC = () => {
           ...doc.data(),
         }));
         setServiceData(listItems);
+        console.log(serviceData);
       });
   }, []);
 
-  const handleDelete = useCallback((id) => {
-    try {
-      firebase.firestore().collection('servicos').doc(id).delete();
-      addToast({
-        type: 'success',
-        title: 'Registro removido com sucesso',
-        description: 'Serviço excluído',
-      });
-    } catch (err) {
-      addToast({
-        type: 'error',
-        title: 'Erro ao remover registro',
-        description: 'Erro de exclusão',
-      });
-    }
-  }, []);
+  const handleDelete = useCallback(
+    (id) => {
+      try {
+        firebase.firestore().collection('servicos').doc(id).delete();
+        addToast({
+          type: 'success',
+          title: 'Registro removido com sucesso',
+          description: 'Serviço excluído',
+        });
+      } catch (err) {
+        addToast({
+          type: 'error',
+          title: 'Erro ao remover registro',
+          description: 'Erro de exclusão',
+        });
+      }
+    },
+    [addToast],
+  );
 
   return (
     <Container>
@@ -166,7 +166,7 @@ const Services: React.FC = () => {
           </thead>
 
           <tbody>
-            {serviceData.map((item: serviceProps) => (
+            {mockServiceData.map((item) => (
               <tr>
                 <td className="title">{item.tipo_servico}</td>
                 <td className="">R$ {item.valor}</td>
