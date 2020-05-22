@@ -155,6 +155,8 @@ $ yarn
 $ yarn start
 ```
 
+### Foi criada
+
 ### Funcionalidades e componentes previstos para serem implementados:
 
 1. Skeleton - LoadContent;
@@ -173,7 +175,7 @@ $ yarn start
 # Fork using GitHub official command line
 # Se você não tem GitHub CLI, use o website para isto.
 
-$ gh repo fork EliasGcf/gofinances
+$ gh repo fork danilods/gobarber-admin
 ```
 
 **Siga os passos abaixo**
