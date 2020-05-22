@@ -155,7 +155,18 @@ $ yarn
 $ yarn start
 ```
 
-### Foi criada
+### Foi criada uma função para simular atraso na conexão para que fosse possível visualizar e testar o suspense. Você só precisa alterar a função setTimeOut, ou retirá-la, se preferir.
+
+```bash
+# src/routes/index.tsx
+
+const Dashboard = lazy(() => {
+  return new Promise(resolve => setTimeout(resolve, 5 * 1000)).then(
+    () =>
+      import('../pages/Dashboard')
+  );
+});
+```
 
 ### Funcionalidades e componentes previstos para serem implementados:
 
@@ -172,10 +183,10 @@ $ yarn start
 **Faça um fork para este repositório**
 
 ```bash
-# Fork using GitHub official command line
-# Se você não tem GitHub CLI, use o website para isto.
-
+# Usando o github CLI:
 $ gh repo fork danilods/gobarber-admin
+
+# Se você não tem GitHub CLI, use o website para isto.
 ```
 
 **Siga os passos abaixo**
