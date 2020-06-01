@@ -193,7 +193,7 @@ $ gh repo fork danilods/gobarber-admin
 
 ```bash
 # Clone seu fork
-$ git clone your-fork-url && cd gofinances
+$ git clone your-fork-url && cd gobarber-admin
 
 # Criar branch com sua feature
 $ git checkout -b my-feature
