@@ -1,11 +1,10 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 import Tooltip from '../Tooltip';
 
 interface ContainerProps {
   isFocused: boolean;
   isFilled: boolean;
   isErrored: boolean;
-
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -26,24 +25,26 @@ export const Container = styled.div<ContainerProps>`
       margin-top: 8px;
     }
 
-    ${props => props.isErrored &&
-    css`
-      color: #c53030;
-      border-color: #c53030;
+    ${({ isErrored }) =>
+      isErrored &&
+      css`
+        color: #c53030;
+        border-color: #c53030;
+      `}
 
-    `}
+    ${({ isFocused }) =>
+      isFocused &&
+      css`
+        color: #ff9000;
+        border-color: #ff9000;
+      `}
 
-    ${props => props.isFocused &&
-    css`
-      color: #ff9000;
-      border-color: #ff9000;
-    `}
+    ${({ isFilled }) =>
+      isFilled &&
+      css`
+        color: #ff9000;
+      `}
 
-    ${props => props.isFilled &&
-    css`
-      color: #ff9000;
-
-    `}
     input {
       background: transparent;
       width: 100%;
@@ -61,23 +62,23 @@ export const Container = styled.div<ContainerProps>`
 `;
 
 export const Error = styled(Tooltip)`
-      height: 20px;
-      margin-left: 30px;
+  height: 20px;
+  margin-left: 30px;
 
-      svg {
-        margin-right: 0px;
-      }
+  svg {
+    margin-right: 0px;
+  }
 
-      span {
-        background: #c53030;
-        color: #fff;
+  span {
+    background: #c53030;
+    color: #fff;
 
-        &::before {
-          border-color: #c53030 transparent;
-        }
-      }
+    &::before {
+      border-color: #c53030 transparent;
+    }
+  }
 
-      &:hover span {
-        opacity: 1;
-      }
+  &:hover span {
+    opacity: 1;
+  }
 `;
