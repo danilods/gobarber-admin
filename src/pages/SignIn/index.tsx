@@ -103,10 +103,12 @@ const SignIn: React.FC = () => {
             />
 
             <Button type="submit">Entrar</Button>
+
             <Link to="/forgot">
               <FiSend />
               Esqueci minha senha
             </Link>
+
             <SignInMethods>
               <img src={fireicon} alt="firebase" />
               <img src={nodejs} alt="node" />
