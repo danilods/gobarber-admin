@@ -2,7 +2,7 @@
 <img src="public/gobarber-logo.png" title="GobarberAdmin"></h1>
 
 <h3 align="center">
-  Backend Admin Template
+  :barber: Backend Admin Template
 </h3>
 
 <p align="center">
