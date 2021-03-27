@@ -17,16 +17,21 @@ import { useToast } from '../../hooks/ToastContext';
 import getValidationErrors from '../../utils/getValidationErrors';
 
 import logoImg from '../../assets/logo.svg';
-import nodejs from '../../assets/nodejs-icon.svg'
-import google from '../../assets/firebase.svg'
-import fireicon from '../../assets/google.svg'
-
+import nodejs from '../../assets/nodejs-icon.svg';
+import google from '../../assets/firebase.svg';
+import fireicon from '../../assets/google.svg';
 
 import Input from '../../components/Input';
 
 import Button from '../../components/Button';
 
-import { Container, Content, AnimationContainer, Background, SignInMethods } from './styles';
+import {
+  Container,
+  Content,
+  AnimationContainer,
+  Background,
+  SignInMethods,
+} from './styles';
 
 interface SignInFormData {
   email: string;
@@ -36,7 +41,7 @@ interface SignInFormData {
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const { signInFirebase, signIn } = useAuth();
+  const { signIn } = useAuth();
 
   const { addToast } = useToast();
   const history = useHistory();
@@ -63,8 +68,6 @@ const SignIn: React.FC = () => {
 
         history.push('/dashboard');
       } catch (err) {
-        console.log(err);
-
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
           formRef.current?.setErrors(errors);
@@ -78,7 +81,7 @@ const SignIn: React.FC = () => {
         });
       }
     },
-    [signInFirebase, addToast, history],
+    [signIn, history, addToast],
   );
 
   return (
@@ -100,17 +103,17 @@ const SignIn: React.FC = () => {
             />
 
             <Button type="submit">Entrar</Button>
+
             <Link to="/forgot">
               <FiSend />
               Esqueci minha senha
             </Link>
+
             <SignInMethods>
-              <img src={fireicon} alt="firebase"/>
-              <img src={nodejs} alt="node"/>
-              <img src={google} alt="google"/>
-
+              <img src={fireicon} alt="firebase" />
+              <img src={nodejs} alt="node" />
+              <img src={google} alt="google" />
             </SignInMethods>
-
           </Form>
 
           <Link to="/signup">
